@@ -196,6 +196,38 @@ const INITIAL_PRODUCTS = [
       { name: 'Paket 25.000 Views Cerita Wattpad Indonesia Sultan', price: 199000 }
     ],
     tags: ['Wattpad', 'View Wattpad', 'Wattpad Indonesia', 'Jasa Wattpad', 'Pembaca Cerita', 'Trending Wattpad', 'Layanan Digital']
+  },
+  {
+    id: 'prod-undangan-digital',
+    name: 'Undangan Digital Online Bebas Revisi (Puluhan Tema Daerah, Foto & Video)',
+    category: 'social',
+    price: 25000,
+    originalPrice: 75000,
+    rating: 5.0,
+    soldCount: 1280,
+    badge: 'BEST SELLER',
+    badgeType: 'hot',
+    iconType: 'heart',
+    image: 'undangan-digital.jpg',
+    images: ['undangan-digital.jpg'],
+    shopeeUrl: 'https://shopee.co.id/product/1173500385/46567802002/',
+    description: 'Jasa pembuatan website undangan pernikahan & acara digital online kekinian yang mewah, praktis, dan hemat biaya. Bebas revisi sepuasnya sampai pas, didukung puluhan pilihan tema daerah (Jawa, Sunda, Minang, Bali, Batak, Melayu, dll) & modern minimalis, galeri foto & video, integrasi RSVP WhatsApp & ucapan, peta lokasi Google Maps, hitung mundur countdown, amplop digital cashless / QRIS, serta fitur nama tamu undangan tanpa batas (unlimited).',
+    features: [
+      'Bebas revisi sepuasnya sampai hasil benar-benar pas & sesuai impian',
+      'Puluhan pilihan tema mewah: Adat Daerah & Modern / Rustic / Floral',
+      'Galeri foto & video prewedding dengan tampilan responsif di semua HP',
+      'Integrasi Buku Tamu digital, RSVP konfirmasi kehadiran WhatsApp & ucapan',
+      'Navigasi rute peta lokasi acara via Google Maps interaktif',
+      'Amplop digital cashless (rekening bank & QRIS) untuk kado praktis',
+      'Fitur kirim undangan personal dengan nama tamu tak terbatas (unlimited tamu)',
+      'Proses pengerjaan kilat dan dibantu langsung oleh admin ramah'
+    ],
+    variants: [
+      { name: 'Paket Basic (Tema Modern + Foto + Musik + Maps)', price: 25000 },
+      { name: 'Paket Premium (Bebas Tema Daerah + Foto + Video + RSVP)', price: 45000 },
+      { name: 'Paket VIP Exclusive (Custom Desain Bebas Revisi + QRIS + Unlimited Tamu)', price: 65000 }
+    ],
+    tags: ['Undangan Digital', 'Undangan Pernikahan', 'Undangan Website', 'Tema Daerah', 'Bebas Revisi', 'Wedding Invitation', 'SL Store', 'Layanan Digital']
   }
 ];
 
@@ -298,6 +330,15 @@ const INITIAL_REVIEWS = [
     date: '2026-09-12',
     comment: 'View Wattpad Indonesia-nya beneran top markotop! Cerita novel saya yang tadinya sepi langsung naik rank dan pembaca organik mulai ramai berdatangan. Prosesnya aman tanpa minta password, recommended banget!',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Zahra'
+  },
+  {
+    id: 'rev-12',
+    productId: 'prod-undangan-digital',
+    userName: 'Dimas & Anisa (Bride & Groom)',
+    rating: 5,
+    date: '2026-09-14',
+    comment: 'Puas banget pesan undangan digital di Salshya Club! Desain temanya mewah, navigasi Google Maps akurat, dan fitur musiknya romantis. Revisi berkali-kali dilayani dengan sangat sabar dan cepat. Keluarga besar & tamu undangan banyak yang muji undangannya bagus banget!',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anisa'
   }
 ];
 
