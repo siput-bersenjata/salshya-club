@@ -228,6 +228,38 @@ const INITIAL_PRODUCTS = [
       { name: 'Paket VIP Exclusive (Custom Desain Bebas Revisi + QRIS + Unlimited Tamu)', price: 65000 }
     ],
     tags: ['Undangan Digital', 'Undangan Pernikahan', 'Undangan Website', 'Tema Daerah', 'Bebas Revisi', 'Wedding Invitation', 'SL Store', 'Layanan Digital']
+  },
+  {
+    id: 'prod-jasa-website',
+    name: 'Jasa Pembuatan Website Profesional (ERP, Portofolio, CV Digital, Dashboard & Sistem Antrian)',
+    category: 'software',
+    price: 145000,
+    originalPrice: 350000,
+    rating: 5.0,
+    soldCount: 760,
+    badge: 'CUSTOM DEV',
+    badgeType: 'hot',
+    iconType: 'terminal',
+    image: 'website-custom.jpg',
+    images: ['website-custom.jpg'],
+    shopeeUrl: 'https://shopee.co.id/product/1173500385/54067764025/',
+    description: 'Jasa pembuatan website & aplikasi sistem profesional serba guna sesuai kebutuhan bisnis, instansi, maupun personal. Melayani pembuatan Sistem ERP, Website Portofolio, CV Digital, Dashboard Monitoring & Gudang, Kasir Desktop PC, Sistem Antrian, Bell Sekolah Otomatis, dan sistem kustom lainnya. Sistem beli putus tanpa biaya langganan bulanan, pengerjaan cepat, bebas revisi selama periode garansi, program bisa offline/online, dan dibantu pemasangan hingga berhasil jalan 100%.',
+    features: [
+      'Beli putus sekali bayar seumur hidup tanpa biaya langganan bulanan',
+      'Pengerjaan cepat & profesional oleh tim developer berpengalaman',
+      'Bebas revisi selama periode garansi & service',
+      'Program bisa berjalan offline (Localhost/PC) maupun online (Cloud Hosting)',
+      'Bebas pilih domain kustom (.com, .id, .my.id, .net, dll)',
+      'Desain kreatif, modern, responsif di semua perangkat (PC, Tablet, HP)',
+      'SEO Friendly & struktur koding rapi mudah dikembangkan',
+      'Dibantu proses instalasi, setup hosting/server, dan training panduan sampai bisa'
+    ],
+    variants: [
+      { name: 'Paket Landing Page / Portofolio / CV Digital', price: 145000 },
+      { name: 'Paket Sistem Khusus (Antrian / Bell Sekolah / Kasir Desktop)', price: 295000 },
+      { name: 'Paket Lengkap ERP / Dashboard Monitoring / Gudang', price: 550000 }
+    ],
+    tags: ['Jasa Website', 'Pembuatan Website', 'Website ERP', 'Portofolio Digital', 'Dashboard Monitoring', 'Sistem Antrian', 'Kasir Desktop', 'SL Store', 'Software Custom']
   }
 ];
 
@@ -339,6 +371,15 @@ const INITIAL_REVIEWS = [
     date: '2026-09-14',
     comment: 'Puas banget pesan undangan digital di Salshya Club! Desain temanya mewah, navigasi Google Maps akurat, dan fitur musiknya romantis. Revisi berkali-kali dilayani dengan sangat sabar dan cepat. Keluarga besar & tamu undangan banyak yang muji undangannya bagus banget!',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anisa'
+  },
+  {
+    id: 'rev-13',
+    productId: 'prod-jasa-website',
+    userName: 'Rahmat Hidayat (Owner Logistik)',
+    rating: 5,
+    date: '2026-09-18',
+    comment: 'Pesan dashboard monitoring stok dan gudang di Salshya Club hasilnya luar biasa memuaskan! Tampilannya modern, kodingannya rapi, dan sistemnya beli putus tanpa biaya bulanan sama sekali. Sangat membantu operasional kantor kami.',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rahmat'
   }
 ];
 
