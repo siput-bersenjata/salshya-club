@@ -786,7 +786,7 @@ const App = {
     // Shopee Link
     if (shopeeLinkEl) {
       const settings = Store.getSettings();
-      shopeeLinkEl.href = settings.shopeeUrl;
+      shopeeLinkEl.href = product.shopeeUrl || settings.shopeeUrl;
     }
 
     // Features list

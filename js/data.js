@@ -330,6 +330,7 @@ const INITIAL_PRODUCTS = [
     iconType: 'book-open',
     image: 'wattpad-views.jpg',
     images: ['wattpad-views.jpg'],
+    shopeeUrl: 'https://shopee.co.id/product/1173500385/45013637408/',
     description: 'Layanan jasa penambah view dan pembaca (reads) cerita Wattpad versi Indonesia nomor 1. Bantu dongkrak popularitas cerita novel Anda agar masuk jajaran trending ranking Wattpad, meningkatkan reputasi cerita, dan memikat lebih banyak pembaca organik tanpa ribet. 100% aman tanpa password akun, hanya memerlukan link/tautan cerita novel Wattpad Anda.',
     features: [
       'Real pembaca & traffic akun aktif Indonesia',
