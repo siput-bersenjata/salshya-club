@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salshya_Club | Pusat Software Premium, Produk Digital & Layanan Sosmed</title>
+  <meta name="description" content="Salshya_Club - Pusat pembelian aplikasi kasir SAL POS, software video editing Filmora, OldRoll vintage camera, jasa followers & likes TikTok, dan produk kerajinan terpercaya di Malang." />
+  <meta name="keywords" content="salshya club, software kasir, sal pos, filmora lifetime, oldroll fullpack, jasa followers tiktok, shopee salshya club" />
+  <meta property="og:title" content="Salshya_Club | Solusi Digital & Software Cerdas" />
+  <meta property="og:description" content="Pesan langsung lewat WhatsApp dengan mudah dan cepat. Bergaransi dan harga terjangkau." />
+  <meta property="og:type" content="website" />
+
+  <!-- Referrer Policy & Favicon -->
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🛍️%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <!-- ==================== BACKGROUND ANIMATION CANVAS ==================== -->
+  <canvas id="confetti-canvas" class="bg-animation-canvas"></canvas>
+
+  <!-- ==================== TOP PROMO ANNOUNCEMENT ==================== -->
+  <aside class="top-announcement" id="top-announcement-bar">
+    <div class="container announcement-inner">
+      <span class="pulse-badge">
+        <span class="pulse-dot"></span>
+        PROMO SPESIAL
+      </span>
+      <span class="announcement-text" id="header-announcement-text">
+        Diskon hingga 70% untuk semua Software & Jasa Digital! Pesan langsung via WhatsApp 24 Jam.
+      </span>
+      <a 
+        href="https://shopee.co.id/salshya_club?categoryId=100642&entryPoint=ShopByPDP&itemId=40360364493" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="shopee-badge-link"
+        id="top-shopee-link"
+      >
+        <span>Lihat Toko di Shopee &rarr;</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN HEADER / NAVBAR ==================== -->
+  <header class="site-header" id="main-header">
+    <div class="container nav-wrapper">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" id="brand-logo-btn" onclick="App.resetFilters(); return false;">
+        <div class="brand-icon-box">
+          <span class="brand-icon-inner">S</span>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">
+            Salshya_Club
+            <svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </span>
+          <span class="brand-sub">Software & Digital Store</span>
+        </div>
+      </a>
+
+      <!-- Search Input -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input 
+            type="text" 
+            id="global-search-input" 
+            class="search-input" 
+            placeholder="Cari software, aplikasi kasir, jasa sosmed..." 
+            autocomplete="off"
+          />
+          <kbd class="search-kbd">/</kbd>
+        </div>
+      </div>
+
+      <!-- Nav Actions -->
+      <nav class="nav-actions">
+        <!-- User Account Button -->
+        <button class="btn-pill btn-pill-subtle" id="nav-user-btn" aria-label="Akun Pengguna">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Masuk / Akun</span>
+        </button>
+
+        <!-- Cart Button with Counter -->
+        <button class="btn-icon" id="nav-cart-btn" onclick="App.openCartDrawer()" aria-label="Buka Keranjang Belanja">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-counter" id="cart-counter-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Theme Toggle Button (3 Mode: Terang ☀️, Gelap 🌙, Gelap AMOLED 🖤) -->
+        <button class="btn-icon" id="theme-toggle-btn" onclick="App.toggleTheme()" aria-label="Ganti Mode Tema (Terang, Gelap, Gelap AMOLED)" title="Ganti Mode Tema (Terang ☀️ / Gelap 🌙 / Gelap AMOLED 🖤)">
+          <span id="theme-icon-slot">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== MOBILE SEARCH STRIP ==================== -->
+  <div class="mobile-search-strip-container" id="mobile-search-strip">
+    <div class="container">
+      <div class="search-input-wrapper mobile-search-wrapper">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input 
+          type="text" 
+          id="mobile-search-input" 
+          class="search-input" 
+          placeholder="Cari software, aplikasi kasir, jasa sosmed..." 
+          autocomplete="off"
+        />
+        <button type="button" id="mobile-search-clear-btn" style="display: none; color: var(--text-muted); padding: 4px; cursor: pointer;" onclick="App.clearSearch()" aria-label="Hapus Pencarian">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== STOREFRONT WRAPPER ==================== -->
+  <div id="storefront-wrapper">
+
+    <!-- Floating Admin Indicator Bar (HANYA MUNCUL KETIKA ADMIN SEDANG LOGIN) -->
+    <div id="admin-logged-in-floating-bar" class="admin-logged-in-bar" style="display: none;">
+      <span style="font-size: 0.76rem; color: #c7d2fe; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+        Mode Admin Aktif
+      </span>
+      <button onclick="App.showAdminDashboard()" class="btn-pill btn-pill-primary" style="padding: 5px 12px; font-size: 0.74rem; font-weight: 700;">
+        Dashboard ⚙️
+      </button>
+      <button onclick="App.adminLogout()" class="btn-pill btn-pill-subtle" style="padding: 5px 10px; font-size: 0.74rem;">
+        Logout
+      </button>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero-banner">
+      <div class="container hero-grid">
+        <div class="hero-content-col">
+          <div class="hero-badge-pill">
+            <span>⭐ Rating Toko 4.9 / 5.0 di Shopee Indonesia</span>
+          </div>
+          <h1 class="hero-title">
+            Pusat Software & Layanan Digital <span class="gradient-text">Terpercaya</span>
+          </h1>
+          <p class="hero-description">
+            Dapatkan aplikasi kasir bisnis tanpa biaya bulanan, software video editor lifetime, dan layanan pertumbuhan media sosial dengan garansi aman. Pemesanan instan terhubung langsung ke WhatsApp!
+          </p>
+
+          <div class="hero-actions">
+            <a href="#katalog-section" class="btn-cta-large btn-cta-primary" id="hero-cta-catalog">
+              <span>Jelajahi Produk</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <button class="btn-cta-large btn-cta-wa" id="hero-cta-wa" onclick="App.openWhatsAppDirect('Halo Admin Salshya Club, saya mau tanya-tanya produk')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.181-.076.355.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+              <span>Chat WhatsApp</span>
+            </button>
+          </div>
+
+          <!-- Trust stats row -->
+          <div class="hero-stats-row">
+            <div class="stat-card">
+              <div class="stat-value">4.9 ⭐</div>
+              <div class="stat-label">Shopee Rating</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">10k+</div>
+              <div class="stat-label">Transaksi Sukses</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">Garansi Layanan</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">24/7</div>
+              <div class="stat-label">Respon Cepat</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Featured Card -->
+        <div class="hero-visual">
+          <div class="hero-featured-card">
+            <div class="featured-top-badge">
+              <span class="verified-seller-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Best Seller Utama
+              </span>
+              <span class="rating-badge-pill">5.0 ★★★★★</span>
+            </div>
+
+            <h3 class="featured-headline">SAL POS - Kasir Pintar UMKM</h3>
+            <p class="featured-sub">Solusi aplikasi kasir modern tanpa biaya bulanan. Cetak struk bluetooth, manajemen stok & laporan laba rugi otomatis.</p>
+
+            <div class="featured-highlights-list">
+              <div class="highlight-item">
+                <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Lisensi Permanen Sekali Bayar (Tanpa Biaya Bulanan)</span>
+              </div>
+              <div class="highlight-item">
+                <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Bisa Offline Tanpa Kuota & Support Printer Thermal</span>
+              </div>
+              <div class="highlight-item">
+                <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Panduan Video Lengkap & Dipandu Sampai Bisa</span>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-subtle); padding-top: 18px;">
+              <div>
+                <span style="font-size: 0.8rem; color: var(--text-dim); text-decoration: line-through;">Rp 150.000</span>
+                <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #34d399;">Rp 59.000</div>
+              </div>
+              <button class="btn-order-wa" onclick="App.buyNowWhatsApp('prod-salpos', 'Versi Android (APK Full)')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.181-.076.355.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+                <span>Pesan Cepat via WA</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CATALOG & PRODUCTS ==================== -->
+    <section class="catalog-section" id="katalog-section">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="catalog-header-wrap">
+          <div>
+            <div class="section-eyebrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="12 8 8 12 12 16 16 12 12 8"/></svg>
+              Koleksi Produk Salshya_Club
+            </div>
+            <h2 class="section-title">Katalog Produk & Layanan</h2>
+            <p class="section-subtitle">Pilih produk yang Anda butuhkan dan checkout langsung ke WhatsApp Admin kami</p>
+          </div>
+
+          <!-- Category Pills -->
+          <div class="category-filter-pills" id="category-pills-container">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Toolbar (Count & Sorting) -->
+        <div class="catalog-toolbar">
+          <div class="item-count-info" id="catalog-count-info">
+            Menampilkan produk...
+          </div>
+          <div class="sort-select-wrapper">
+            <label for="catalog-sort-select" class="sort-label">Urutkan:</label>
+            <select id="catalog-sort-select" class="sort-dropdown">
+              <option value="popular">Paling Populer / Terlaris</option>
+              <option value="rating">Rating Tertinggi (⭐ 5.0)</option>
+              <option value="price-low">Harga Termurah</option>
+              <option value="price-high">Harga Tertinggi</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="product-grid" id="product-grid-container">
+          <!-- Rendered dynamically by App.renderProducts() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== KEUNGGULAN / VALUE PROPOSITIONS ==================== -->
+    <section class="features-section" id="keunggulan-section">
+      <div class="container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 40px;">
+          <div class="section-eyebrow" style="justify-content: center;">Mengapa Memilih Kami?</div>
+          <h2 class="section-title">Keunggulan Belanja di Salshya_Club</h2>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="feature-box-title">Proses Super Cepat</h3>
+            <p class="feature-box-desc">Pengiriman file software atau pengerjaan layanan digital diproses dalam hitungan menit setelah konfirmasi.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="feature-box-title">100% Bergaransi</h3>
+            <p class="feature-box-desc">Setiap produk dilengkapi garansi instalasi dan perlindungan refill untuk layanan media sosial.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="18" x2="12" y2="20"/><line x1="12" y1="4" x2="12" y2="6"/></svg>
+            </div>
+            <h3 class="feature-box-title">Harga Paling Terjangkau</h3>
+            <p class="feature-box-desc">Tanpa biaya langganan bulanan yang memberatkan. Sekali bayar untuk penggunaan selamanya.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <h3 class="feature-box-title">Dukungan Ramah 24/7</h3>
+            <p class="feature-box-desc">Tim kami siap membantu instalasi dan konsultasi via WhatsApp setiap hari dengan respon cepat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS & ULASAN ==================== -->
+    <section class="testimonials-section" id="ulasan-section">
+      <div class="container">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 30px; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div class="section-eyebrow">Kepuasan Pelanggan</div>
+            <h2 class="section-title">Apa Kata Pembeli Kami?</h2>
+            <p class="section-subtitle">Ulasan asli dan penilaian dari pelanggan terverifikasi Salshya_Club</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; background: rgba(245, 158, 11, 0.15); padding: 8px 16px; border-radius: var(--radius-full); border: 1px solid rgba(245, 158, 11, 0.3);">
+            <span style="color: var(--accent-amber); font-weight: 800; font-size: 1.1rem;">4.9 / 5.0</span>
+            <span style="font-size: 0.8rem; color: #fde68a;">(Shopee Verified Rating)</span>
+          </div>
+        </div>
+
+        <div class="reviews-grid" id="testimonials-container">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Brand Info -->
+          <div>
+            <div class="brand-logo">
+              <div class="brand-icon-box">
+                <span class="brand-icon-inner">S</span>
+              </div>
+              <div class="brand-info">
+                <span class="brand-title">Salshya_Club</span>
+                <span class="brand-sub">Kab. Malang, Jawa Timur</span>
+              </div>
+            </div>
+            <p class="footer-brand-desc">
+              Pusat penyedia aplikasi kasir pintar, software video editor, kamera retro, dan jasa pertumbuhan media sosial berkualitas. Melayani transaksi aman & terpercaya.
+            </p>
+            <div style="display: flex; gap: 10px;">
+              <a 
+                href="https://shopee.co.id/salshya_club?categoryId=100642&entryPoint=ShopByPDP&itemId=40360364493" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn-pill btn-pill-subtle"
+                style="font-size: 0.78rem;"
+              >
+                Kunjungi Toko Shopee
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Navigation -->
+          <div>
+            <h4 class="footer-heading">Navigasi</h4>
+            <ul class="footer-links-list">
+              <li><a href="#hero-banner" class="footer-link">Beranda</a></li>
+              <li><a href="#katalog-section" class="footer-link">Katalog Produk</a></li>
+              <li><a href="#keunggulan-section" class="footer-link">Keunggulan Toko</a></li>
+              <li><a href="#ulasan-section" class="footer-link">Ulasan Pembeli</a></li>
+              <li><a href="#" onclick="App.openAdminLoginModal(); return false;" class="footer-link">Login Admin</a></li>
+            </ul>
+          </div>
+
+          <!-- Kategori Populer -->
+          <div>
+            <h4 class="footer-heading">Kategori</h4>
+            <ul class="footer-links-list">
+              <li><a href="#katalog-section" onclick="App.setCategory('software')" class="footer-link">Software Kasir POS</a></li>
+              <li><a href="#katalog-section" onclick="App.setCategory('software')" class="footer-link">Filmora Video Editor</a></li>
+              <li><a href="#katalog-section" onclick="App.setCategory('software')" class="footer-link">OldRoll Analog Camera</a></li>
+              <li><a href="#katalog-section" onclick="App.setCategory('social')" class="footer-link">Followers & Likes TikTok</a></li>
+              <li><a href="#katalog-section" onclick="App.setCategory('craft')" class="footer-link">Kotak Tisu Kayu 3D</a></li>
+            </ul>
+          </div>
+
+          <!-- Metode Pembayaran & Kontak -->
+          <div>
+            <h4 class="footer-heading">Metode Pembayaran</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">Menerima pembayaran instan tanpa ribet:</p>
+            <div class="payment-badges-row">
+              <span class="pay-badge">QRIS All Payment</span>
+              <span class="pay-badge">BCA</span>
+              <span class="pay-badge">Bank Mandiri</span>
+              <span class="pay-badge">Dana</span>
+              <span class="pay-badge">GoPay</span>
+              <span class="pay-badge">ShopeePay</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>&copy; 2026 Salshya_Club. Hak Cipta Dilindungi. | <a href="#admin" onclick="App.openAdminLoginModal(); return false;" style="color: var(--text-dim); text-decoration: none; font-size: 0.8rem;" title="Akses Masuk Pemilik Toko">Akses Admin</a></div>
+          <div>Lokasi: Kab. Malang, Jawa Timur | Pesanan otomatis terintegrasi WhatsApp</div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- ==================== END STOREFRONT ==================== -->
+
+  <!-- ==================== ADMIN CMS PANEL ==================== -->
+  <div id="admin-panel-wrapper" class="admin-panel-wrapper" style="display: none;">
+    <!-- Topbar -->
+    <div class="admin-topbar">
+      <div class="admin-topbar-left">
+        <span class="admin-badge-indicator">MODE PEMILIK TOKO</span>
+        <h2 class="admin-topbar-title">Dashboard Admin Salshya_Club</h2>
+        <span id="admin-session-badge" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); padding: 3px 10px; border-radius: 999px; margin-left: 6px; vertical-align: middle;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="admin-session-text">Sesi 30 Hari Aktif</span>
+        </span>
+      </div>
+      <div class="admin-topbar-actions">
+        <button class="btn-admin-nav" onclick="App.hideAdminDashboard()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Lihat Halaman Toko</span>
+        </button>
+        <button class="btn-admin-nav btn-admin-logout" onclick="App.adminLogout()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span>Keluar</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabs Nav -->
+    <div class="admin-tabs-nav">
+      <button class="admin-tab-item active" id="admin-tab-btn-products" onclick="App.switchAdminTab('products')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span>Katalog & Edit Produk</span>
+      </button>
+      <button class="admin-tab-item" id="admin-tab-btn-reviews" onclick="App.switchAdminTab('reviews')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Moderasi Ulasan Pembeli</span>
+      </button>
+      <button class="admin-tab-item" id="admin-tab-btn-orders" onclick="App.switchAdminTab('orders')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span>Log Pesanan WhatsApp</span>
+      </button>
+      <button class="admin-tab-item" id="admin-tab-btn-settings" onclick="App.switchAdminTab('settings')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Pengaturan Toko & WA</span>
+      </button>
+    </div>
+
+    <!-- Admin Content Container -->
+    <div class="container" style="padding-top: 24px;">
+      <!-- Overview Metrics -->
+      <div class="admin-metrics-row">
+        <div class="metric-card">
+          <div class="metric-icon-circle metric-purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <div class="metric-content">
+            <span class="metric-value" id="metric-total-products">0</span>
+            <span class="metric-label">Total Produk Aktif</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon-circle metric-green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <div class="metric-content">
+            <span class="metric-value" id="metric-total-orders">0</span>
+            <span class="metric-label">Pesanan WA Tercatat</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon-circle metric-amber">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="metric-content">
+            <span class="metric-value" id="metric-total-reviews">0</span>
+            <span class="metric-label">Ulasan Pelanggan</span>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon-circle metric-cyan">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="metric-content">
+            <span class="metric-value" id="metric-avg-rating">5.0 ⭐</span>
+            <span class="metric-label">Rata-rata Rating Toko</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 1: PRODUCTS MANAGEMENT -->
+      <section id="admin-section-products" style="display: block;">
+        <div class="admin-section-header">
+          <div>
+            <h3 class="admin-section-title">Kelola & Edit Produk Toko</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Tambahkan produk baru, ubah harga, ganti varian, atau hapus produk.</p>
+          </div>
+          <button class="btn-add-product" id="btn-admin-add-prod" onclick="App.openProductEditor(null)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>Tambah Produk Baru</span>
+          </button>
+        </div>
+
+        <div class="admin-table-card">
+          <div class="admin-table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Produk & Kategori</th>
+                  <th>Harga & Diskon</th>
+                  <th>Varian</th>
+                  <th>Terjual</th>
+                  <th>Rating</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-tbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: REVIEWS MODERATION -->
+      <section id="admin-section-reviews" style="display: none;">
+        <div class="admin-section-header">
+          <div>
+            <h3 class="admin-section-title">Moderasi Ulasan Pembeli</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Tinjau feedback, rating bintang, dan kelola ulasan yang masuk dari pelanggan.</p>
+          </div>
+        </div>
+        <div id="admin-reviews-container">
+          <!-- Rendered by JS -->
+        </div>
+      </section>
+
+      <!-- TAB 3: ORDERS LOG -->
+      <section id="admin-section-orders" style="display: none;">
+        <div class="admin-section-header">
+          <div>
+            <h3 class="admin-section-title">Riwayat Pesanan yang Masuk ke WhatsApp</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Daftar pemesanan yang dibuat pelanggan melalui website.</p>
+          </div>
+        </div>
+        <div class="admin-table-card">
+          <div class="admin-table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID & Waktu</th>
+                  <th>Pemesan</th>
+                  <th>Item Produk</th>
+                  <th>Total Tagihan</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-tbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: STORE SETTINGS -->
+      <section id="admin-section-settings" style="display: none;">
+        <div class="admin-section-header">
+          <div>
+            <h3 class="admin-section-title">Pengaturan Toko & Integrasi WhatsApp</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Atur nomor WhatsApp penerima pesanan, info rekening, dan banner pengumuman.</p>
+          </div>
+        </div>
+
+        <div class="admin-form-card">
+          <form onsubmit="App.handleSaveSettings(event)">
+            <div class="admin-form-grid">
+              <div class="form-group">
+                <label class="form-label" for="set-store-name">Nama Toko:</label>
+                <input type="text" id="set-store-name" class="form-input" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="set-store-wa">Nomor WhatsApp Penerima Pesanan (Format: 628xxx):</label>
+                <input type="text" id="set-store-wa" class="form-input" placeholder="6281234567890" required />
+                <span style="font-size: 0.72rem; color: var(--accent-cyan); display: block; margin-top: 4px;">Penting: Pastikan diawali kode negara 62 tanpa spasi atau strip.</span>
+              </div>
+
+              <div class="form-group admin-form-full">
+                <label class="form-label" for="set-store-tagline">Slogan / Tagline Toko:</label>
+                <input type="text" id="set-store-tagline" class="form-input" />
+              </div>
+
+              <div class="form-group admin-form-full">
+                <label class="form-label" for="set-store-shopee">Link Toko Shopee:</label>
+                <input type="url" id="set-store-shopee" class="form-input" />
+              </div>
+
+              <div class="form-group admin-form-full">
+                <label class="form-label" for="set-store-announcement">Teks Banner Pengumuman Atas:</label>
+                <input type="text" id="set-store-announcement" class="form-input" />
+              </div>
+
+              <div class="form-group admin-form-full">
+                <label class="form-label" for="set-store-bank">Pilihan Metode Pembayaran / No Rekening:</label>
+                <input type="text" id="set-store-bank" class="form-input" placeholder="BCA 123456 / Mandiri / Dana / QRIS" />
+              </div>
+
+              <div class="form-group admin-form-full" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; margin: 8px 0 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+                  <div>
+                    <label class="form-label" style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 2px;" for="set-store-bg-anim">
+                      🎨 Animasi Latar Belakang (Seluruh Halaman):
+                    </label>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                      Atur gaya partikel animasi visual di belakang seluruh halaman website atau aktifkan mode rotasi harian.
+                    </p>
+                  </div>
+                  <span class="badge-tag badge-cyan" id="admin-bg-active-tag" style="font-size: 0.75rem; padding: 4px 10px;">
+                    Aktif: Memuat...
+                  </span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; margin-top: 10px;">
+                  <select id="set-store-bg-anim" class="form-input" style="cursor: pointer; font-weight: 600;" onchange="App.handleBackgroundAnimChange(this.value)">
+                    <option value="confetti" selected>🎉 Hujan Konfeti Pesta (Default Toko - Ceria & Elegan)</option>
+                    <option value="stars">✨ Kosmik Bintang & Meteor (Lembut & Berkedip)</option>
+                    <option value="none">🚫 Nonaktifkan Animasi Partikel (Minimalis / Polos)</option>
+                  </select>
+                  <button type="button" class="btn-pill btn-pill-primary" onclick="App.previewBackgroundAnim()" style="padding: 10px 18px; font-size: 0.82rem; white-space: nowrap;">
+                    👁️ Uji Coba Langsung
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="set-store-theme">🌓 Preferensi Tema Tampilan:</label>
+                <select id="set-store-theme" class="form-input" style="cursor: pointer; font-weight: 600;" onchange="App.applyTheme(this.value, true)">
+                  <option value="light">☀️ Mode Terang (Clean Minimalist)</option>
+                  <option value="dark">🌙 Mode Gelap (Cyber-Luxe Navy)</option>
+                  <option value="amoled">🖤 Mode Gelap AMOLED (Pure Black 100% Layar OLED)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="set-admin-pass">Ganti Password Admin Baru:</label>
+                <input type="password" id="set-admin-pass" class="form-input" placeholder="Ketik password baru jika ingin mengganti" />
+              </div>
+            </div>
+
+            <div class="admin-form-actions">
+              <button type="submit" class="btn-cta-large btn-cta-primary" style="padding: 10px 24px; font-size: 0.9rem;">
+                Simpan Perubahan
+              </button>
+              <button type="button" class="btn-pill btn-pill-subtle" onclick="App.resetStoreDemo()" style="color: var(--accent-rose); border-color: rgba(244,63,94,0.3);">
+                Reset ke Data Awal Pabrik
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- DATA BACKUP, RESTORE & VERCEL SYNC CARD -->
+        <div class="admin-form-card" style="margin-top: 24px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 6px;">
+            <h4 style="font-size: 1.1rem; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+              <span>💾 Cadangan & Sinkronisasi Data (Anti-Reset)</span>
+            </h4>
+            <span class="badge-tag badge-emerald" id="backup-status-badge">Tersimpan Aman</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.83rem; margin-bottom: 16px;">
+            Unduh file cadangan data toko Anda, pulihkan kapan saja, atau salin kode katalog untuk disimpan permanen di file proyek Vercel.
+          </p>
+
+          <div class="backup-tools-grid">
+            <!-- Tool 1: Download JSON Backup -->
+            <div class="backup-tool-box">
+              <div class="backup-tool-icon">📥</div>
+              <div class="backup-tool-title">Unduh Cadangan (JSON)</div>
+              <p class="backup-tool-desc">Simpan seluruh katalog produk, ulasan, pengaturan, dan riwayat pesanan ke file .json di komputer / HP Anda.</p>
+              <button type="button" class="btn-pill btn-pill-primary" onclick="App.downloadBackupJson()" style="width: 100%; justify-content: center; font-size: 0.84rem;">
+                Download File Backup (.json)
+              </button>
+            </div>
+
+            <!-- Tool 2: Restore from JSON -->
+            <div class="backup-tool-box">
+              <div class="backup-tool-icon">📤</div>
+              <div class="backup-tool-title">Pulihkan Data (Restore)</div>
+              <p class="backup-tool-desc">Upload file cadangan .json yang pernah Anda unduh untuk memulihkan katalog & ulasan toko dalam 1 detik.</p>
+              <input type="file" id="backup-file-input" accept=".json" style="display: none;" onchange="App.handleRestoreJsonFile(event)" />
+              <button type="button" class="btn-pill btn-pill-subtle" onclick="document.getElementById('backup-file-input').click()" style="width: 100%; justify-content: center; font-size: 0.84rem; color: #38bdf8; border-color: rgba(56,189,248,0.3);">
+                Pilih File JSON & Pulihkan
+              </button>
+            </div>
+
+            <!-- Tool 3: Copy Code for data.js (Permanent Vercel Sync) -->
+            <div class="backup-tool-box">
+              <div class="backup-tool-icon">📋</div>
+              <div class="backup-tool-title">Salin Format data.js (Vercel)</div>
+              <p class="backup-tool-desc">Salin struktur produk saat ini ke clipboard untuk ditempel di file <code>js/data.js</code> agar 100% permanen di hosting Vercel.</p>
+              <button type="button" class="btn-pill btn-pill-subtle" onclick="App.copyDataJsSnippet()" style="width: 100%; justify-content: center; font-size: 0.84rem; color: #a855f7; border-color: rgba(168,85,247,0.3);">
+                Salin Kode Katalog ke Clipboard
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ==================== ADMIN DEDICATED PRODUCT EDITOR VIEW (HALAMAN TERPISAH) ==================== -->
+  <div id="admin-product-editor-view" class="admin-editor-page" style="display: none;">
+    <div class="container" style="max-width: 1180px; padding: 32px 16px 80px;">
+      
+      <!-- Top Navigation & Breadcrumbs -->
+      <div class="editor-header-nav">
+        <div class="editor-breadcrumbs">
+          <button type="button" class="btn-back-breadcrumb" onclick="App.closeProductEditor()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>Kembali ke Daftar Produk</span>
+          </button>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current" id="editor-breadcrumb-title">Edit Produk</span>
+        </div>
+
+        <div class="editor-header-actions">
+          <button type="button" class="btn-pill btn-pill-subtle" onclick="App.closeProductEditor()">
+            Batal
+          </button>
+          <button type="button" class="btn-cta-large btn-cta-primary" onclick="App.handleSaveProductFromEditor()" style="padding: 10px 24px; font-size: 0.9rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            <span>Simpan Produk</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Page Title & Subtitle -->
+      <div class="editor-title-block">
+        <h1 class="editor-main-heading" id="editor-page-heading">Edit Rincian Produk</h1>
+        <p class="editor-subtitle">Kelola informasi, multi-foto produk dari file lokal atau link web, varian harga, dan deskripsi secara leluasa.</p>
+      </div>
+
+      <form id="editor-product-form" onsubmit="event.preventDefault(); App.handleSaveProductFromEditor();">
+        <input type="hidden" id="editor-product-id" value="" />
+
+        <div class="editor-layout-grid">
+          
+          <!-- LEFT COLUMN: Gambar Produk & Galeri Multi-Foto -->
+          <div class="editor-col-left">
+            <div class="editor-card">
+              <div class="editor-card-header">
+                <div class="editor-card-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span>Galeri Foto Produk (Bisa Lebih dari 1 Foto)</span>
+                </div>
+                <span class="badge-tag badge-cyan" id="editor-photo-count-badge">0 Foto</span>
+              </div>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px;">
+                Pilih <strong>beberapa file gambar sekaligus</strong> dari komputer/HP Anda, atau tambahkan tautan gambar web URL.
+              </p>
+
+              <!-- Dropzone File Upload Lokal -->
+              <div class="editor-dropzone" id="editor-dropzone" onclick="document.getElementById('editor-file-input').click()">
+                <input type="file" id="editor-file-input" multiple accept="image/*" style="display: none;" onchange="App.handleImageFilesSelect(event)" />
+                <div class="dropzone-inner">
+                  <div class="dropzone-icon-circle">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  </div>
+                  <div style="font-weight: 700; font-size: 0.95rem; color: #fff; margin-bottom: 4px;">
+                    📁 Klik untuk Mengunggah Foto dari Komputer / HP
+                  </div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">
+                    Atau tarik & lepas foto ke sini (Mendukung multi-file .jpg, .png, .webp)
+                  </div>
+                </div>
+              </div>
+
+              <!-- Input Alternatif Tambah URL Gambar -->
+              <div style="margin-top: 14px;">
+                <label class="form-label" style="font-size: 0.8rem;" for="editor-image-url-input">Atau Tambah Gambar via URL / Link Web:</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="url" id="editor-image-url-input" class="form-input" placeholder="https://cf.shopee.co.id/file/... atau https://..." />
+                  <button type="button" class="btn-pill btn-pill-secondary" onclick="App.addImageFromUrlInput()" style="white-space: nowrap; padding: 0 16px;">
+                    + Tambah
+                  </button>
+                </div>
+              </div>
+
+              <!-- Container Thumbnail Galeri Multi-Gambar -->
+              <div style="margin-top: 20px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div style="font-size: 0.85rem; font-weight: 700; color: #e2e8f0;">
+                    Daftar Foto Produk:
+                  </div>
+                  <span style="font-size: 0.75rem; color: var(--text-dim);">*Foto urutan #1 menjadi Cover Utama</span>
+                </div>
+                <div id="editor-gallery-container" class="editor-gallery-container">
+                  <!-- Diisi secara dinamis oleh JavaScript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Varian & Lisensi -->
+            <div class="editor-card" style="margin-top: 20px;">
+              <div class="editor-card-header">
+                <div class="editor-card-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  <span>Pilihan Varian & Harga (Opsional)</span>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+                Format: <code>Nama Varian:Harga</code> (1 varian per baris).
+              </p>
+              <textarea id="editor-prod-variants" class="form-textarea" rows="4" placeholder="Versi Android:59000&#10;Versi PC Windows:79000&#10;Paket Bundle:110000"></textarea>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Informasi Dasar, Harga & Fitur -->
+          <div class="editor-col-right">
+            <div class="editor-card">
+              <div class="editor-card-header">
+                <div class="editor-card-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                  <span>Informasi Utama Produk</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="editor-prod-name">Nama Produk: *</label>
+                <input type="text" id="editor-prod-name" class="form-input" placeholder="Nama produk yang jelas dan menarik..." required />
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="form-group">
+                  <label class="form-label" for="editor-prod-category">Kategori Produk: *</label>
+                  <select id="editor-prod-category" class="form-input" required style="cursor: pointer;">
+                    <option value="software">Software & Aplikasi</option>
+                    <option value="social">Layanan Digital & Sosmed</option>
+                    <option value="craft">Kerajinan Fisik</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="editor-prod-badge">Badge Label (Opsional):</label>
+                  <input type="text" id="editor-prod-badge" class="form-input" placeholder="BEST SELLER / POPULER / PROMO" />
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="form-group">
+                  <label class="form-label" for="editor-prod-price">Harga Promo / Jual (Rp): *</label>
+                  <input type="number" id="editor-prod-price" class="form-input" placeholder="59000" required />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="editor-prod-origprice">Harga Coret Asli (Rp):</label>
+                  <input type="number" id="editor-prod-origprice" class="form-input" placeholder="150000" />
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="form-group">
+                  <label class="form-label" for="editor-prod-rating">Rating Bintang (1.0 - 5.0):</label>
+                  <input type="number" id="editor-prod-rating" class="form-input" step="0.1" min="1" max="5" placeholder="5.0" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="editor-prod-sold">Jumlah Terjual (Shopee):</label>
+                  <input type="number" id="editor-prod-sold" class="form-input" placeholder="842" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="editor-prod-desc">Deskripsi Singkat / Manfaat Produk:</label>
+                <textarea id="editor-prod-desc" class="form-textarea" rows="4" placeholder="Jelaskan manfaat, keunggulan, garansi, dan cara pemesanan produk ini..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="editor-prod-features">Poin-poin Fitur Unggulan (1 baris per poin):</label>
+                <textarea id="editor-prod-features" class="form-textarea" rows="4" placeholder="Tanpa biaya bulanan&#10;Bisa offline tanpa kuota&#10;Support printer bluetooth&#10;Panduan install lengkap dibantu remote"></textarea>
+              </div>
+            </div>
+
+            <!-- Sticky Save Bar -->
+            <div class="editor-bottom-bar">
+              <button type="button" class="btn-pill btn-pill-subtle" onclick="App.closeProductEditor()" style="padding: 12px 24px;">
+                Batal
+              </button>
+              <button type="submit" class="btn-cta-large btn-cta-primary" style="padding: 12px 32px; font-size: 0.95rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                <span>Simpan Perubahan Produk</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== CART DRAWER SIDEBAR ==================== -->
+  <div class="drawer-backdrop" id="cart-drawer-backdrop" onclick="if(event.target === this) App.closeCartDrawer()">
+    <aside class="cart-drawer" id="cart-drawer-panel">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span>Keranjang Belanja</span>
+        </div>
+        <button class="btn-close-drawer" onclick="App.closeCartDrawer()" aria-label="Tutup Keranjang">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="drawer-body" id="cart-drawer-items">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="drawer-footer" id="cart-drawer-footer">
+        <div class="drawer-summary-row">
+          <span>Subtotal Produk</span>
+          <span id="cart-subtotal-val">Rp 0</span>
+        </div>
+        <div class="drawer-total-row">
+          <span>Total Tagihan:</span>
+          <span class="drawer-total-amount" id="cart-total-val">Rp 0</span>
+        </div>
+
+        <!-- Quick Checkout Form -->
+        <div style="background: rgba(0,0,0,0.25); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 14px; border: 1px solid var(--border-subtle);">
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label class="form-label" style="font-size: 0.75rem;" for="checkout-buyer-name">Nama Lengkap Pemesan: *</label>
+            <input type="text" id="checkout-buyer-name" class="form-input" style="padding: 6px 10px; font-size: 0.8rem;" placeholder="Contoh: Rian Pratama" required />
+          </div>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label class="form-label" style="font-size: 0.75rem;" for="checkout-buyer-phone">Nomor WhatsApp Anda:</label>
+            <input type="text" id="checkout-buyer-phone" class="form-input" style="padding: 6px 10px; font-size: 0.8rem;" placeholder="Contoh: 081298765432" />
+          </div>
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label class="form-label" style="font-size: 0.75rem;" for="checkout-payment-method">Pilihan Pembayaran:</label>
+            <select id="checkout-payment-method" class="form-input" style="padding: 6px 10px; font-size: 0.8rem; cursor: pointer;">
+              <option value="QRIS (BCA, Mandiri, Dana, Ovo, ShopeePay)">QRIS All Payment (BCA/Dana/Ovo/dll)</option>
+              <option value="Transfer BCA">Transfer Bank BCA</option>
+              <option value="Transfer Mandiri">Transfer Bank Mandiri</option>
+              <option value="Dana / GoPay / ShopeePay">E-Wallet (Dana / GoPay / ShopeePay)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" style="font-size: 0.75rem;" for="checkout-buyer-notes">Catatan Tambahan (Opsional):</label>
+            <input type="text" id="checkout-buyer-notes" class="form-input" style="padding: 6px 10px; font-size: 0.8rem;" placeholder="Username sosmed / email kirim file" />
+          </div>
+        </div>
+
+        <button class="btn-checkout-wa" id="btn-submit-cart-wa" onclick="App.checkoutCartWhatsApp()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.181-.076.355.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+          <span>Pesan via WhatsApp Sekarang</span>
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== PRODUCT DETAIL & REVIEW MODAL ==================== -->
+  <div class="modal-overlay" id="product-detail-modal" onclick="if(event.target === this) App.closeAllModals()">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="App.closeAllModals()" aria-label="Tutup Modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-product-grid">
+        <!-- Left: Image Preview -->
+        <div class="modal-gallery-side">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Crect width='100%25' height='100%25' fill='%23111827'/%3E%3C/svg%3E" alt="Preview Produk" class="modal-main-img" id="modal-product-img" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1556742049-0a67c5574f73?w=600&auto=format&fit=crop&q=80'" />
+          <div id="modal-thumbnails-strip" class="modal-thumbnails-strip" style="display: none;"></div>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-subtle" id="modal-shopee-link" style="justify-content: center; font-size: 0.8rem; color: #fb923c;">
+            <span>Lihat Produk di Shopee &rarr;</span>
+          </a>
+        </div>
+
+        <!-- Right: Details & Order -->
+        <div class="modal-detail-side">
+          <span class="modal-category-badge" id="modal-product-cat">Kategori</span>
+          <h2 class="modal-product-name" id="modal-product-name">Nama Produk</h2>
+
+          <div class="modal-rating-row" id="modal-rating-summary">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="modal-price-box">
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Harga Promo:</div>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+              <span style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: #34d399;" id="modal-product-price">Rp 0</span>
+              <span style="font-size: 0.88rem; color: var(--text-dim); text-decoration: line-through;" id="modal-product-origprice">Rp 0</span>
+            </div>
+          </div>
+
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px;" id="modal-product-desc"></p>
+
+          <!-- Variants Selector -->
+          <div class="modal-variants-section" id="modal-variants-container">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Feature Highlights -->
+          <div class="modal-features-list" id="modal-features-container">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Dual Buttons -->
+          <div style="display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: auto;">
+            <button class="btn-order-wa" id="modal-btn-buy-wa" style="padding: 12px 20px; font-size: 0.95rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.181-.076.355.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+              <span>Pesan Sekarang via WA</span>
+            </button>
+            <button class="btn-add-cart" id="modal-btn-add-cart" style="width: 48px; height: 48px;" title="Tambah ke keranjang">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews & Rating Section Inside Modal -->
+      <div class="modal-tabs-header">
+        <button class="modal-tab-btn active" id="modal-tab-reviews">Ulasan & Rating Pembeli</button>
+      </div>
+
+      <div class="modal-tab-content">
+        <!-- Form Beri Ulasan & Rating -->
+        <div class="review-form-card">
+          <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Tulis Ulasan & Beri Rating:</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Bagikan pengalaman Anda menggunakan produk ini untuk membantu pembeli lainnya.</p>
+
+          <form onsubmit="App.submitProductReview(event)">
+            <!-- Star Rating Selector -->
+            <div class="review-stars-select">
+              <span class="star-picker-btn active" onclick="App.setReviewStar(1)">★</span>
+              <span class="star-picker-btn active" onclick="App.setReviewStar(2)">★</span>
+              <span class="star-picker-btn active" onclick="App.setReviewStar(3)">★</span>
+              <span class="star-picker-btn active" onclick="App.setReviewStar(4)">★</span>
+              <span class="star-picker-btn active" onclick="App.setReviewStar(5)">★</span>
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-amber); margin-left: 8px;" id="star-rating-label">5 - Luar Biasa & Rekomendasi!</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="review-input-name">Nama Anda:</label>
+              <input type="text" id="review-input-name" class="form-input" placeholder="Nama Anda atau nama toko" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="review-input-comment">Komentar / Ulasan:</label>
+              <textarea id="review-input-comment" class="form-textarea" placeholder="Ceritakan bagaimana software atau layanan ini membantu bisnis Anda..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-pill btn-pill-primary" style="font-size: 0.85rem; padding: 10px 20px;">
+              Kirim Ulasan & Rating
+            </button>
+          </form>
+        </div>
+
+        <!-- Reviews List for this Product -->
+        <div id="modal-reviews-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== USER AUTH MODAL (LOGIN / REGISTER) ==================== -->
+  <div class="modal-overlay" id="auth-modal" onclick="if(event.target === this) App.closeAllModals()">
+    <div class="modal-card" style="max-width: 440px; padding: 28px;">
+      <button class="modal-close-btn" onclick="App.closeAllModals()" aria-label="Tutup">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div style="display: flex; gap: 10px; margin-bottom: 24px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 12px;">
+        <button class="admin-tab-item active" id="auth-tab-login" onclick="App.switchAuthTab('login')">Masuk Akun</button>
+        <button class="admin-tab-item" id="auth-tab-register" onclick="App.switchAuthTab('register')">Daftar Akun Baru</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="auth-login-form" onsubmit="App.handleUserLogin(event)">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Selamat Datang!</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 18px;">Masuk untuk kemudahan pemesanan, melihat riwayat pesanan, dan menulis rating ulasan.</p>
+
+        <div class="form-group">
+          <label class="form-label" for="login-identity">Email / No. WhatsApp:</label>
+          <input type="text" id="login-identity" class="form-input" placeholder="contoh@gmail.com atau 0812xxx" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password:</label>
+          <input type="password" id="login-password" class="form-input" placeholder="Masukkan password" required />
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: center; justify-content: space-between; margin-top: -4px; margin-bottom: 14px;">
+          <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-secondary); cursor: pointer; user-select: none;">
+            <input type="checkbox" id="user-remember-me" checked style="accent-color: var(--accent-orange); width: 16px; height: 16px; cursor: pointer;" />
+            <span>Ingat Saya (Tetap login selama 30 hari)</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-cta-large btn-cta-primary" style="width: 100%; justify-content: center; margin-top: 6px;">
+          Masuk Sekarang
+        </button>
+
+        <div style="text-align: center; margin-top: 16px; font-size: 0.78rem; color: var(--text-muted);">
+          <span>Akun demo siap pakai:</span> <strong>pelanggan@gmail.com</strong> / <strong>user123</strong>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="auth-register-form" style="display: none;" onsubmit="App.handleUserRegister(event)">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">Daftar Akun Pelanggan</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 18px;">Lengkapi data berikut untuk bergabung menjadi member Salshya_Club.</p>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-name">Nama Lengkap: *</label>
+          <input type="text" id="reg-name" class="form-input" placeholder="Nama Anda" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-phone">Nomor WhatsApp: *</label>
+          <input type="tel" id="reg-phone" class="form-input" placeholder="08123456789" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-email">Alamat Email (Opsional):</label>
+          <input type="email" id="reg-email" class="form-input" placeholder="nama@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-password">Buat Password: *</label>
+          <input type="password" id="reg-password" class="form-input" placeholder="Minimal 6 karakter" required />
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: center; justify-content: space-between; margin-top: -4px; margin-bottom: 14px;">
+          <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-secondary); cursor: pointer; user-select: none;">
+            <input type="checkbox" id="user-reg-remember-me" checked style="accent-color: var(--accent-orange); width: 16px; height: 16px; cursor: pointer;" />
+            <span>Ingat Saya (Tetap login selama 30 hari)</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-cta-large btn-cta-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
+          Daftar Sekarang
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== USER PROFILE MODAL ==================== -->
+  <div class="modal-overlay" id="user-profile-modal" onclick="if(event.target === this) App.closeAllModals()">
+    <div class="modal-card" style="max-width: 480px; padding: 28px;">
+      <button class="modal-close-btn" onclick="App.closeAllModals()" aria-label="Tutup">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+        <div style="width: 54px; height: 54px; border-radius: 50%; background: var(--primary-gradient); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800;">
+          👤
+        </div>
+        <div>
+          <h3 style="font-size: 1.2rem; font-weight: 800;" id="profile-name">Nama Pengguna</h3>
+          <span style="font-size: 0.8rem; color: var(--accent-cyan);">Member Salshya_Club</span>
+        </div>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 14px; margin-bottom: 20px; font-size: 0.85rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span style="color: var(--text-muted);">No. WhatsApp:</span>
+          <span id="profile-phone" style="font-weight: 600;">-</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Email:</span>
+          <span id="profile-email" style="font-weight: 600;">-</span>
+        </div>
+      </div>
+
+      <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 10px;">Riwayat Pesanan Anda:</h4>
+      <div id="profile-orders-list" style="max-height: 200px; overflow-y: auto; margin-bottom: 20px;">
+        <!-- Rendered by JS -->
+      </div>
+
+      <button class="btn-pill btn-pill-subtle" style="width: 100%; justify-content: center; color: #fb7185; border-color: rgba(244,63,94,0.3);" onclick="App.logoutUser()">
+        Keluar dari Akun (Logout)
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== ADMIN LOGIN MODAL ==================== -->
+  <div class="modal-overlay" id="admin-login-modal" onclick="if(event.target === this) App.closeAllModals()">
+    <div class="modal-card" style="max-width: 420px; padding: 28px;">
+      <button class="modal-close-btn" onclick="App.closeAllModals()" aria-label="Tutup">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="width: 50px; height: 50px; border-radius: 14px; background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: #c4b5fd;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3 style="font-size: 1.3rem; font-weight: 800;">Login Pemilik Toko</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Akses khusus untuk mengedit, menambah produk, dan mengatur toko.</p>
+      </div>
+
+      <!-- Progressive Lockout Banner & Countdown Timer -->
+      <div id="admin-login-lockout-banner" class="admin-lockout-banner" style="display: none; margin-bottom: 18px;"></div>
+
+      <form id="admin-login-form" onsubmit="App.handleAdminLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="admin-username-input">Username Admin:</label>
+          <input type="text" id="admin-username-input" class="form-input" placeholder="admin" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="admin-password-input">Password Admin:</label>
+          <input type="password" id="admin-password-input" class="form-input" placeholder="Masukkan password admin" required />
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: center; justify-content: space-between; margin-top: -4px; margin-bottom: 14px;">
+          <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--text-secondary); cursor: pointer; user-select: none;">
+            <input type="checkbox" id="admin-remember-me" checked style="accent-color: var(--accent-orange); width: 16px; height: 16px; cursor: pointer;" />
+            <span>Ingat Saya (Tetap login selama 30 hari)</span>
+          </label>
+        </div>
+
+        <button type="submit" id="admin-login-submit-btn" class="btn-cta-large btn-cta-primary" style="width: 100%; justify-content: center; margin-top: 6px;">
+          Masuk ke Dashboard CMS
+        </button>
+
+        <div style="text-align: center; margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Akses Portal Admin Terenkripsi & Aman</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== ADMIN ADD / EDIT PRODUCT MODAL ==================== -->
+  <div class="modal-overlay" id="admin-product-modal" onclick="if(event.target === this) App.closeAllModals()">
+    <div class="modal-card" style="max-width: 680px; padding: 28px;">
+      <button class="modal-close-btn" onclick="App.closeAllModals()" aria-label="Tutup">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 4px;" id="admin-product-modal-title">Tambah / Edit Produk</h3>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px;">Lengkapi rincian produk yang akan tampil di halaman depan website.</p>
+
+      <form id="admin-product-form" onsubmit="App.handleSaveProduct(event)">
+        <input type="hidden" id="form-product-id" value="" />
+
+        <div class="form-group">
+          <label class="form-label" for="form-prod-name">Nama Produk: *</label>
+          <input type="text" id="form-prod-name" class="form-input" placeholder="Contoh: SAL POS - Aplikasi Kasir Toko" required />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="form-group">
+            <label class="form-label" for="form-prod-category">Kategori: *</label>
+            <select id="form-prod-category" class="form-input" style="cursor: pointer;" required>
+              <option value="software">Software & Aplikasi</option>
+              <option value="social">Layanan Digital & Sosmed</option>
+              <option value="craft">Kerajinan Fisik</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-prod-badge">Badge Label (Opsional):</label>
+            <input type="text" id="form-prod-badge" class="form-input" placeholder="BEST SELLER / POPULER / PROMO" />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="form-group">
+            <label class="form-label" for="form-prod-price">Harga Promo (Rp): *</label>
+            <input type="number" id="form-prod-price" class="form-input" placeholder="59000" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-prod-origprice">Harga Coret Asli (Rp):</label>
+            <input type="number" id="form-prod-origprice" class="form-input" placeholder="150000" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-prod-image">URL Gambar Produk:</label>
+          <input type="url" id="form-prod-image" class="form-input" placeholder="https://images.unsplash.com/..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-prod-desc">Deskripsi Singkat Produk:</label>
+          <textarea id="form-prod-desc" class="form-textarea" placeholder="Jelaskan kegunaan dan manfaat produk..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-prod-features">Fitur Unggulan (1 baris per poin):</label>
+          <textarea id="form-prod-features" class="form-textarea" placeholder="Tanpa biaya bulanan&#10;Bisa offline tanpa kuota&#10;Support printer bluetooth"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-prod-variants">Daftar Varian & Harga (Format: Nama Varian:Harga, 1 per baris):</label>
+          <textarea id="form-prod-variants" class="form-textarea" placeholder="Versi Android:59000&#10;Versi PC Windows:79000&#10;Paket Bundle:110000"></textarea>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button type="submit" class="btn-cta-large btn-cta-primary" style="flex: 1; justify-content: center;">
+            Simpan Produk
+          </button>
+          <button type="button" class="btn-pill btn-pill-subtle" onclick="App.closeAllModals()">
+            Batal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+  <div class="floating-actions">
+    <a href="#" class="float-btn-wa" id="floating-wa-btn" aria-label="Hubungi Admin di WhatsApp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.181-.076.355.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z"/></svg>
+      <span>Chat WhatsApp</span>
+    </a>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
