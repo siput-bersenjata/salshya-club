@@ -12,7 +12,9 @@
 
   <!-- Referrer Policy & Favicon -->
   <meta name="referrer" content="no-referrer" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🛍️%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/jpeg" href="sl-logo.jpg" />
+  <link rel="apple-touch-icon" href="sl-logo.jpg" />
+  <meta property="og:image" content="sl-logo.jpg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +57,7 @@
       <!-- Brand Logo -->
       <a href="#" class="brand-logo" id="brand-logo-btn" onclick="App.resetFilters(); return false;">
         <div class="brand-icon-box">
-          <span class="brand-icon-inner">S</span>
+          <img src="sl-logo.jpg" alt="Salim Lovieshya SL 3D Logo" class="brand-logo-img" />
         </div>
         <div class="brand-info">
           <span class="brand-title">
@@ -345,7 +347,7 @@
           <div>
             <div class="brand-logo">
               <div class="brand-icon-box">
-                <span class="brand-icon-inner">S</span>
+                <img src="sl-logo.jpg" alt="Salim Lovieshya SL 3D Logo" class="brand-logo-img" />
               </div>
               <div class="brand-info">
                 <span class="brand-title">Salshya_Club</span>
@@ -421,13 +423,18 @@
   <div id="admin-panel-wrapper" class="admin-panel-wrapper" style="display: none;">
     <!-- Topbar -->
     <div class="admin-topbar">
-      <div class="admin-topbar-left">
-        <span class="admin-badge-indicator">MODE PEMILIK TOKO</span>
-        <h2 class="admin-topbar-title">Dashboard Admin Salshya_Club</h2>
-        <span id="admin-session-badge" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); padding: 3px 10px; border-radius: 999px; margin-left: 6px; vertical-align: middle;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span id="admin-session-text">Sesi 30 Hari Aktif</span>
-        </span>
+      <div class="admin-topbar-left" style="display: flex; align-items: center; gap: 12px;">
+        <img src="sl-logo.jpg" alt="SL Logo" style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover; box-shadow: 0 4px 12px rgba(11,59,82,0.45); border: 1.5px solid rgba(124,234,212,0.4); flex-shrink: 0;" />
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="admin-badge-indicator">MODE PEMILIK TOKO</span>
+            <span id="admin-session-badge" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.74rem; background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); padding: 3px 10px; border-radius: 999px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span id="admin-session-text">Sesi 30 Hari Aktif</span>
+            </span>
+          </div>
+          <h2 class="admin-topbar-title">Dashboard Admin Salshya_Club</h2>
+        </div>
       </div>
       <div class="admin-topbar-actions">
         <button class="btn-admin-nav" onclick="App.hideAdminDashboard()">
@@ -1088,6 +1095,10 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
 
+      <div style="text-align: center; margin-bottom: 16px;">
+        <img src="sl-logo.jpg" alt="SL 3D Logo" style="width: 52px; height: 52px; border-radius: 14px; object-fit: cover; margin: 0 auto; display: block; box-shadow: 0 6px 18px rgba(11,59,82,0.45); border: 1.5px solid rgba(124,234,212,0.4);" />
+      </div>
+
       <div style="display: flex; gap: 10px; margin-bottom: 24px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 12px;">
         <button class="admin-tab-item active" id="auth-tab-login" onclick="App.switchAuthTab('login')">Masuk Akun</button>
         <button class="admin-tab-item" id="auth-tab-register" onclick="App.switchAuthTab('register')">Daftar Akun Baru</button>
@@ -1171,9 +1182,7 @@
       </button>
 
       <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
-        <div style="width: 54px; height: 54px; border-radius: 50%; background: var(--primary-gradient); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800;">
-          👤
-        </div>
+        <img src="sl-logo.jpg" alt="SL Logo" style="width: 54px; height: 54px; border-radius: 14px; object-fit: cover; box-shadow: 0 4px 14px rgba(11,59,82,0.4); border: 1.5px solid rgba(124,234,212,0.4); flex-shrink: 0;" />
         <div>
           <h3 style="font-size: 1.2rem; font-weight: 800;" id="profile-name">Nama Pengguna</h3>
           <span style="font-size: 0.8rem; color: var(--accent-cyan);">Member Salshya_Club</span>
@@ -1210,9 +1219,7 @@
       </button>
 
       <div style="text-align: center; margin-bottom: 20px;">
-        <div style="width: 50px; height: 50px; border-radius: 14px; background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: #c4b5fd;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
+        <img src="sl-logo.jpg" alt="SL 3D Logo" style="width: 60px; height: 60px; border-radius: 16px; object-fit: cover; margin: 0 auto 12px; display: block; box-shadow: 0 8px 24px rgba(11,59,82,0.5); border: 2px solid rgba(124,234,212,0.4);" />
         <h3 style="font-size: 1.3rem; font-weight: 800;">Login Pemilik Toko</h3>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Akses khusus untuk mengedit, menambah produk, dan mengatur toko.</p>
       </div>
