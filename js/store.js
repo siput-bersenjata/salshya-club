@@ -194,6 +194,11 @@ const Store = {
     };
     products.unshift(newProduct);
     localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(products));
+
+    if (typeof FirebaseSync !== 'undefined' && FirebaseSync.saveProduct) {
+      FirebaseSync.saveProduct(newProduct);
+    }
+
     return newProduct;
   },
 
@@ -211,9 +216,15 @@ const Store = {
         ...products[index], 
         ...updatedData,
         images,
-        image: images[0] || updatedData.image || products[index].image || ''
+        image: images[0] || updatedData.image || products[index].image || '',
+        updatedAt: new Date().toISOString()
       };
       localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(products));
+
+      if (typeof FirebaseSync !== 'undefined' && FirebaseSync.saveProduct) {
+        FirebaseSync.saveProduct(products[index]);
+      }
+
       return products[index];
     }
     return null;
@@ -226,6 +237,11 @@ const Store = {
     localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(products));
     // Juga hapus dari cart jika ada
     this.removeProductFromCartCompletely(id);
+
+    if (typeof FirebaseSync !== 'undefined' && FirebaseSync.deleteProduct) {
+      FirebaseSync.deleteProduct(id);
+    }
+
     return true;
   },
 
@@ -258,6 +274,10 @@ const Store = {
     reviews.unshift(newReview);
     localStorage.setItem(this.KEYS.REVIEWS, JSON.stringify(reviews));
 
+    if (typeof FirebaseSync !== 'undefined' && FirebaseSync.saveReview) {
+      FirebaseSync.saveReview(newReview);
+    }
+
     // Update rata-rata rating produk
     this.recalculateProductRating(productId);
     return newReview;
@@ -270,6 +290,11 @@ const Store = {
     if (target) {
       reviews = reviews.filter(r => r.id !== reviewId);
       localStorage.setItem(this.KEYS.REVIEWS, JSON.stringify(reviews));
+
+      if (typeof FirebaseSync !== 'undefined' && FirebaseSync.deleteReview) {
+        FirebaseSync.deleteReview(reviewId);
+      }
+
       this.recalculateProductRating(target.productId);
       return true;
     }
@@ -299,6 +324,11 @@ const Store = {
     const current = this.getSettings();
     const updated = { ...current, ...newSettings };
     localStorage.setItem(this.KEYS.SETTINGS, JSON.stringify(updated));
+
+    if (typeof FirebaseSync !== 'undefined' && FirebaseSync.saveSettings) {
+      FirebaseSync.saveSettings(updated);
+    }
+
     return updated;
   },
 
@@ -779,6 +809,11 @@ const Store = {
     };
     orders.unshift(newOrder);
     localStorage.setItem(this.KEYS.ORDERS, JSON.stringify(orders));
+
+    if (typeof FirebaseSync !== 'undefined' && FirebaseSync.saveOrder) {
+      FirebaseSync.saveOrder(newOrder);
+    }
+
     return newOrder;
   },
 
@@ -791,6 +826,10 @@ const Store = {
     localStorage.setItem(this.KEYS.SETTINGS, JSON.stringify(INITIAL_SETTINGS));
     localStorage.setItem(this.KEYS.CART, JSON.stringify([]));
     localStorage.removeItem(this.KEYS.ADMIN_SESSION);
+
+    if (typeof FirebaseSync !== 'undefined' && FirebaseSync.resetToDefault) {
+      FirebaseSync.resetToDefault();
+    }
   },
 
   /* ================== BACKUP, RESTORE & EXPORT ================== */

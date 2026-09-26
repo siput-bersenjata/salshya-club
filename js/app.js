@@ -2096,6 +2096,44 @@ const App = {
     document.body.removeChild(ta);
   },
 
+  /* ================== FIREBASE CLOUD REALTIME SYNC HANDLERS ================== */
+  onProductsRemoteSync(products) {
+    this.renderCategories();
+    this.renderProducts();
+    if (this.selectedDetailProduct) {
+      const freshProd = Store.getProductById(this.selectedDetailProduct.id);
+      if (freshProd) {
+        this.selectedDetailProduct = freshProd;
+      }
+    }
+    if (Store.isAdminLoggedIn()) {
+      this.renderAdminProductsTable();
+      this.renderAdminOverview();
+    }
+  },
+
+  onSettingsRemoteSync(settings) {
+    this.renderHeader();
+    if (settings.backgroundAnimation && window.AnimationsEngine) {
+      AnimationsEngine.setMode(settings.backgroundAnimation, false);
+    }
+    if (Store.isAdminLoggedIn()) {
+      this.renderAdminSettingsForm();
+      this.renderAdminOverview();
+    }
+  },
+
+  onReviewsRemoteSync(reviews) {
+    this.renderTestimonials();
+    if (this.selectedDetailProduct) {
+      this.renderProductReviewsList(this.selectedDetailProduct.id);
+    }
+    if (Store.isAdminLoggedIn()) {
+      this.renderAdminReviewsList();
+      this.renderAdminOverview();
+    }
+  },
+
   /* Helper to close all modals */
   closeAllModals() {
     document.querySelectorAll('.modal-overlay').forEach(modal => {
