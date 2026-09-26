@@ -28,9 +28,15 @@ const Store = {
   getDeletedProductIds() {
     try {
       const raw = localStorage.getItem(this.KEYS.DELETED_PRODUCTS);
-      return raw ? JSON.parse(raw) : [];
+      const userList = raw ? JSON.parse(raw) : [];
+      const baseList = (typeof INITIAL_DELETED_PRODUCT_IDS !== 'undefined' && Array.isArray(INITIAL_DELETED_PRODUCT_IDS)) 
+        ? INITIAL_DELETED_PRODUCT_IDS 
+        : [];
+      return Array.from(new Set([...baseList, ...userList]));
     } catch (e) {
-      return [];
+      return (typeof INITIAL_DELETED_PRODUCT_IDS !== 'undefined' && Array.isArray(INITIAL_DELETED_PRODUCT_IDS)) 
+        ? INITIAL_DELETED_PRODUCT_IDS 
+        : [];
     }
   },
 
@@ -65,10 +71,30 @@ const Store = {
   init() {
     // 1. Inisialisasi Produk
     const rawProducts = localStorage.getItem(this.KEYS.PRODUCTS);
+    const deletedProductIds = new Set(this.getDeletedProductIds());
     if (rawProducts === null) {
-      const deletedProductIds = new Set(this.getDeletedProductIds());
       const initial = INITIAL_PRODUCTS.filter(p => !deletedProductIds.has(p.id));
       localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(initial));
+    } else {
+      try {
+        const parsed = JSON.parse(rawProducts);
+        if (Array.isArray(parsed)) {
+          // Bersihkan produk yang sudah dihapus oleh user dari LocalStorage
+          const cleaned = parsed.filter(p => !deletedProductIds.has(p.id) && !p.isDeleted);
+          // Pertahankan dan pulihkan gambar kustom yang diupload user
+          cleaned.forEach(p => {
+            if (p.id === 'prod-salpos' && (!p.image || p.image.includes('cf.shopee.co.id'))) {
+              p.image = 'salpos-custom.jpg';
+              p.images = ['salpos-custom.jpg'];
+            }
+            if (p.id === 'prod-getcontact' && (!p.image || p.image.includes('cf.shopee.co.id'))) {
+              p.image = 'getcontact-custom.jpg';
+              p.images = ['getcontact-custom.jpg'];
+            }
+          });
+          localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(cleaned));
+        }
+      } catch (e) {}
     }
 
     // 2. Inisialisasi Ulasan

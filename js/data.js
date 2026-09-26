@@ -11,6 +11,16 @@ const INITIAL_CATEGORIES = [
   { id: 'craft', name: 'Kerajinan Fisik', icon: 'box' }
 ];
 
+const INITIAL_DELETED_PRODUCT_IDS = [
+  'prod-filmora',
+  'prod-followers',
+  'prod-oldroll',
+  'prod-playstore-rating',
+  'prod-tissue-box',
+  'prod-views-likes',
+  'prod-ytbot'
+];
+
 const INITIAL_PRODUCTS = [
   {
     id: 'prod-salpos',
@@ -23,7 +33,8 @@ const INITIAL_PRODUCTS = [
     badge: 'BEST SELLER',
     badgeType: 'hot',
     iconType: 'pos',
-    image: 'https://cf.shopee.co.id/file/id-11134207-7rase-m554qhfvfyxk68',
+    image: 'salpos-custom.jpg',
+    images: ['salpos-custom.jpg'],
     description: 'Aplikasi kasir pintar (Point of Sales) untuk semua jenis usaha (toko retail, kelontong, cafe, resto, laundry, dll). Tanpa biaya langganan bulanan (sekali bayar seumur hidup), mendukung mode offline tanpa kuota dan sinkronisasi laporan online.',
     features: [
       'Tanpa biaya bulanan (Lifetime License Aktif Selamanya)',
@@ -52,6 +63,7 @@ const INITIAL_PRODUCTS = [
     badgeType: 'purple',
     iconType: 'image',
     image: 'https://cf.shopee.co.id/file/sg-11134201-7rbmv-m5nv52am1xzi6c',
+    images: ['https://cf.shopee.co.id/file/sg-11134201-7rbmv-m5nv52am1xzi6c'],
     description: 'Aplikasi edit foto katalog produk berbasis AI nomor 1 di dunia. Hapus background otomatis sekejap, ganti background studio profesional, tambah bayangan realistis, dan buat foto jualan produk olshop terlihat mewah seketika.',
     features: [
       'Hapus background otomatis sekejap dengan kecerdasan AI',
@@ -69,145 +81,6 @@ const INITIAL_PRODUCTS = [
     tags: ['PhotoRoom Pro', 'Edit Foto AI', 'Hapus Background', 'Foto Produk', 'Katalog Olshop', 'AI Photo']
   },
   {
-    id: 'prod-oldroll',
-    name: 'OldRoll Vintage Film Camera FullPack Lifetime (Android/iOS)',
-    category: 'software',
-    price: 29000,
-    originalPrice: 69000,
-    rating: 4.9,
-    soldCount: 970,
-    badge: 'TRENDING',
-    badgeType: 'purple',
-    iconType: 'camera',
-    image: 'https://cf.shopee.co.id/file/sg-11134201-8258v-mqa6dcgh4c8w37',
-    description: 'Aplikasi kamera retro analog vintage estetik untuk smartphone. Unlock semua preset lensa dan kamera film legendaris seperti Classic M, Toy F, PR PS, CCD, Rollei, dan efek grain retro khas 90-an tanpa iklan.',
-    features: [
-      'Unlock semua kamera & filter retro (FullPack seumur hidup)',
-      'Bebas iklan mengganggu dan bebas watermark',
-      'Hasil foto langsung estetik khas kamera analog klasik',
-      'Support kamera depan & belakang + flash estetik',
-      'Tersedia untuk Android & iOS Apple ID',
-      'Garansi aktivasi instan & tutorial pemasangan lengkap'
-    ],
-    variants: [
-      { name: 'Android FullPack Lifetime (APK)', price: 29000 },
-      { name: 'iOS Apple ID FullPack Lifetime', price: 35000 }
-    ],
-    tags: ['OldRoll', 'Kamera Analog', 'Aplikasi Estetik', 'Filter Retro', 'Android iOS', 'Vintage Camera']
-  },
-  {
-    id: 'prod-filmora',
-    name: 'Filmora Video Editor Lifetime Full Version (Win/Mac/Android)',
-    category: 'software',
-    price: 35000,
-    originalPrice: 89000,
-    rating: 4.9,
-    soldCount: 1520,
-    badge: 'POPULER',
-    badgeType: 'blue',
-    iconType: 'video',
-    image: 'https://cf.shopee.co.id/file/sg-11134201-7rdwc-lzu8r0lvtx7m8c',
-    description: 'Software video editing paling digemari konten kreator YouTube, TikTok & Reels. Full version bebas watermark selamanya, unlock semua filter sinematik, efek transisi, sound effect, dan text animation.',
-    features: [
-      'Bebas watermark selamanya (No Watermark 100%)',
-      'Unlock ratusan efek video, transisi, dan filter premium',
-      'Lifetime license (instal di PC/Laptop sekali bayar)',
-      'Tersedia untuk Windows 10/11, macOS, dan Android',
-      'File aman bebas virus & panduan instalasi step-by-step',
-      'Garansi instalasi dipandu remote jika ada kendala'
-    ],
-    variants: [
-      { name: 'Filmora Versi 12 (Windows 64-bit)', price: 35000 },
-      { name: 'Filmora Versi 13 Terbaru (Windows 64-bit)', price: 45000 },
-      { name: 'Filmora Versi Mac (Apple Silicon / Intel)', price: 49000 },
-      { name: 'Filmora Android Pro APK Fullpack', price: 29000 }
-    ],
-    tags: ['Filmora', 'Video Editor', 'Software PC', 'Edit Video', 'Tanpa Watermark', 'Wondershare']
-  },
-  {
-    id: 'prod-ytbot',
-    name: 'YouTube Watch Time Booster & Viewer Bot (4.000 Jam Tayang)',
-    category: 'software',
-    price: 49000,
-    originalPrice: 125000,
-    rating: 4.8,
-    soldCount: 430,
-    badge: 'HOT TOOL',
-    badgeType: 'orange',
-    iconType: 'bot',
-    image: 'https://cf.shopee.co.id/file/id-11134207-7ra0i-mcvlbpo3u3vbcb',
-    description: 'Tools otomatisasi viewer dan jam tayang YouTube untuk mempercepat syarat 4.000 Jam Tayang monetisasi channel YouTube secara aman dengan proxy rotation dan user-agent acak.',
-    features: [
-      'Otomatisasi pemutaran video dengan multi-thread',
-      'Mendukung custom playlist dan durasi tonton fleksibel',
-      'Dilengkapi fitur rotasi proxy & user agent agar natural',
-      'Membantu mengejar target 4.000 jam tayang Adsense',
-      'Ringan dijalankan di PC / Laptop Windows',
-      'Dilengkapi panduan optimasi agar views tidak drop'
-    ],
-    variants: [
-      { name: 'Lisensi 1 PC (Full Tools + Tutorial)', price: 49000 },
-      { name: 'Lisensi Unlimited PC + Bonus Proxy Fresh', price: 85000 }
-    ],
-    tags: ['YouTube Bot', 'Jam Tayang YouTube', 'Monetisasi YouTube', 'Viewer Bot', 'Tools YouTube']
-  },
-  {
-    id: 'prod-followers',
-    name: 'Jasa Tambah Followers TikTok & Instagram Bergaransi',
-    category: 'social',
-    price: 25000,
-    originalPrice: 50000,
-    rating: 5.0,
-    soldCount: 3410,
-    badge: 'REKOMENDASI',
-    badgeType: 'green',
-    iconType: 'users',
-    image: 'https://cf.shopee.co.id/file/id-11134207-7rbk1-ma2ai28uznzn6d',
-    description: 'Layanan suntik followers akun media sosial untuk menaikkan kredibilitas toko online, influencer, dan personal branding. 100% aman tanpa password, hanya butuh username/link akun saja.',
-    features: [
-      'Tanpa password akun (hanya butuh username/link profil)',
-      'Proses cepat masuk bertahap secara alami',
-      'Bergaransi refill (drop protection 30 hari)',
-      'Akun terlihat profesional & terpercaya untuk jualan',
-      'Privasi aman dan akun tetap aman dari banned'
-    ],
-    variants: [
-      { name: '500 Followers (TikTok / IG)', price: 25000 },
-      { name: '1.000 Followers (TikTok / IG) + Garansi Refill', price: 45000 },
-      { name: '2.500 Followers (TikTok / IG) + Garansi Refill', price: 99000 },
-      { name: '5.000 Followers (TikTok / IG) Paket Sultan', price: 180000 }
-    ],
-    tags: ['Followers TikTok', 'Followers Instagram', 'Jasa Sosmed', 'Suntik Followers', 'Followers Indo']
-  },
-  {
-    id: 'prod-views-likes',
-    name: 'Jasa Tambah Likes & FYP Views TikTok Instan',
-    category: 'social',
-    price: 15000,
-    originalPrice: 35000,
-    rating: 4.9,
-    soldCount: 2890,
-    badge: 'MURAH & CEPAT',
-    badgeType: 'cyan',
-    iconType: 'heart',
-    image: 'https://cf.shopee.co.id/file/id-11134207-7rbkb-m9pdh6gmbpcd70',
-    description: 'Tingkatkan engagement rate video TikTok Anda agar berpeluang masuk FYP (For You Page) dan viral lebih cepat. Meningkatkan skor algoritma video dan interaksi penonton.',
-    features: [
-      'Proses hitungan menit setelah pembayaran diverifikasi',
-      'Cukup kirimkan link video TikTok (tanpa password)',
-      'Membantu memancing algoritma FYP penonton organik',
-      'Cocok untuk konten kreator, affiliate, dan jualan produk',
-      'Aman 100% dari shadowban'
-    ],
-    variants: [
-      { name: '5.000 Views + 200 Likes TikTok', price: 15000 },
-      { name: '20.000 Views + 500 Likes TikTok', price: 35000 },
-      { name: '50.000 Views + 1.200 Likes TikTok', price: 69000 },
-      { name: '100.000 Views FYP Booster Super', price: 95000 }
-    ],
-    tags: ['Views TikTok', 'Likes TikTok', 'FYP Booster', 'Jasa TikTok', 'Viral TikTok']
-  },
-  {
     id: 'prod-telegram',
     name: 'Jasa Broadcast & Tambah Member Grup/Channel Telegram',
     category: 'social',
@@ -219,6 +92,7 @@ const INITIAL_PRODUCTS = [
     badgeType: 'purple',
     iconType: 'send',
     image: 'https://cf.shopee.co.id/file/id-11134207-822wh-mng3v6s6lced6d',
+    images: ['https://cf.shopee.co.id/file/id-11134207-822wh-mng3v6s6lced6d'],
     description: 'Layanan pertumbuhan komunitas grup dan channel Telegram untuk promosi bisnis online, affiliate marketing, sinyal trading, maupun komunitas lokal secara tertarget.',
     features: [
       'Tambah subscriber channel Telegram atau member grup',
@@ -235,34 +109,6 @@ const INITIAL_PRODUCTS = [
     tags: ['Telegram Member', 'Broadcast Telegram', 'Jasa Telegram', 'Promosi Grup', 'Subscriber Telegram']
   },
   {
-    id: 'prod-playstore-rating',
-    name: 'Jasa Download, Rating Bintang 5 & Review Google Play Store',
-    category: 'social',
-    price: 15000,
-    originalPrice: 35000,
-    rating: 5.0,
-    soldCount: 520,
-    badge: 'ASO BOOSTER',
-    badgeType: 'green',
-    iconType: 'star',
-    image: 'https://cf.shopee.co.id/file/id-11134207-7ra0m-mbcrcg7r0roec4',
-    description: 'Layanan optimasi rating ASO (App Store Optimization) aplikasi Google Play Store dengan ulasan positif bintang 5 dari akun real manusia aktif Indonesia untuk mendongkrak reputasi dan kepercayaan calon pengguna aplikasi Anda.',
-    features: [
-      'Real device & akun aktif Indonesia (bukan bot)',
-      'Ulasan bintang 5 custom sesuai request kata-kata Anda',
-      'Bergaransi non-drop & aman dari banned sistem Google Play',
-      'Meningkatkan ranking ASO pencarian kata kunci Play Store',
-      'Proses pengerjaan cepat dan bertahap secara alami'
-    ],
-    variants: [
-      { name: 'Paket 10 Review + Rating Bintang 5', price: 15000 },
-      { name: 'Paket 25 Review + Rating Bintang 5', price: 35000 },
-      { name: 'Paket 50 Review + Rating Bintang 5', price: 65000 },
-      { name: 'Paket 100 Review Bintang 5 Sultan', price: 120000 }
-    ],
-    tags: ['Review Play Store', 'Rating Bintang 5', 'Jasa ASO', 'Download Playstore', 'Review Aplikasi']
-  },
-  {
     id: 'prod-getcontact',
     name: 'Jasa Cek & Tambah Tag / Nama Kontak GetContact (GC) Instan',
     category: 'social',
@@ -273,7 +119,8 @@ const INITIAL_PRODUCTS = [
     badge: 'KILAT',
     badgeType: 'cyan',
     iconType: 'tag',
-    image: 'https://cf.shopee.co.id/file/id-11134207-7ra0p-md51lroso0c8a5',
+    image: 'getcontact-custom.jpg',
+    images: ['getcontact-custom.jpg'],
     description: 'Layanan tambah tag nama kontak GetContact (GC) untuk personal branding, bisnis, maupun keperluan profesional agar nomor telepon Anda terlihat kredibel, meyakinkan, dan terpercaya saat dicek oleh calon pelanggan.',
     features: [
       'Proses kilat hanya butuh 5 - 15 menit',
@@ -301,6 +148,7 @@ const INITIAL_PRODUCTS = [
     badgeType: 'blue',
     iconType: 'check-circle',
     image: 'https://cf.shopee.co.id/file/id-11134201-81ztf-mrp4l5li6juw27',
+    images: ['https://cf.shopee.co.id/file/id-11134201-81ztf-mrp4l5li6juw27'],
     description: 'Layanan voting online cepat dan aman untuk polling website, survey Google Form, Strawpoll, pemilihan lomba/kompetisi, kontes media sosial, dan survei opini publik dengan IP unik Indonesia.',
     features: [
       'Menggunakan multi IP address & clean proxy unik Indonesia',
@@ -348,34 +196,6 @@ const INITIAL_PRODUCTS = [
       { name: 'Paket 25.000 Views Cerita Wattpad Indonesia Sultan', price: 199000 }
     ],
     tags: ['Wattpad', 'View Wattpad', 'Wattpad Indonesia', 'Jasa Wattpad', 'Pembaca Cerita', 'Trending Wattpad', 'Layanan Digital']
-  },
-  {
-    id: 'prod-tissue-box',
-    name: 'Kotak Tisu Motif Seni 3D Kayu Solid Kontemporer',
-    category: 'craft',
-    price: 45000,
-    originalPrice: 85000,
-    rating: 4.9,
-    soldCount: 380,
-    badge: 'HANDMADE',
-    badgeType: 'orange',
-    iconType: 'box',
-    image: 'https://cf.shopee.co.id/file/id-11134207-8224q-mghk6fqaud5a1d',
-    description: 'Produk fisik kotak tisu kayu dengan motif ukiran seni kontemporer 3D. Dibuat dengan presisi tinggi dari kayu solid pilihan, finishing halus anti-rayap pelindung melamin awet, sangat cantik memperindah meja ruang tamu, kafe, kantor, atau souvenir spesial.',
-    features: [
-      'Bahan kayu solid ramah lingkungan, kokoh, dan berbobot',
-      'Motif relief 3D artistik modern minimalis',
-      'Finishing halus pelindung melamin awet tahan lama & anti-rayap',
-      'Muat untuk ukuran isi ulang tisu standar pasaran',
-      'Pengemasan ekstra aman dengan bubble wrap tebal berlapis',
-      'Bisa custom grafir nama / logo pesanan jumlah banyak'
-    ],
-    variants: [
-      { name: 'Motif Kayu Natural Oak 3D', price: 45000 },
-      { name: 'Motif Kayu Dark Walnut 3D', price: 49000 },
-      { name: 'Custom Grafir Nama / Tulisan', price: 59000 }
-    ],
-    tags: ['Kotak Tisu', 'Kerajinan Kayu', 'Motif 3D', 'Dekorasi Meja', 'Produk Fisik', 'Kayu Solid']
   }
 ];
 
