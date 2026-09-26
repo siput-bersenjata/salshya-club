@@ -61,7 +61,7 @@ const Store = {
     }
   },
 
-  // Inisialisasi awal jika LocalStorage masih kosong
+  // Inisialisasi awal jika LocalStorage masih kosong atau tersisa parsial karena blacklist lama
   init() {
     // 1. Inisialisasi Produk
     let existingProducts = [];
@@ -72,24 +72,18 @@ const Store = {
       existingProducts = [];
     }
 
-    const deletedProductIds = new Set(this.getDeletedProductIds());
+    // Bersihkan blacklist lokal yang tidak valid karena Cloud Firestore adalah sumber utama
+    localStorage.removeItem(this.KEYS.DELETED_PRODUCTS);
+    localStorage.removeItem(this.KEYS.DELETED_REVIEWS);
 
-    if (!Array.isArray(existingProducts) || existingProducts.length === 0) {
-      // Pertama kali berkunjung: muat produk awal tapi kecualikan yang ada di daftar hapus
-      const initialFiltered = INITIAL_PRODUCTS.filter(p => !deletedProductIds.has(p.id));
-      localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(initialFiltered));
-    } else {
-      // LocalStorage sudah punya data produk pengguna:
-      // JANGAN PERNAH menimpa ulang produk secara paksa dengan INITIAL_PRODUCTS!
-      // Cukup pastikan produk yang sudah dihapus tidak tersisa
-      const cleanProducts = existingProducts.filter(p => !deletedProductIds.has(p.id));
-      if (cleanProducts.length !== existingProducts.length) {
-        localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(cleanProducts));
-      }
+    const isCloudSynced = localStorage.getItem('salshya_synced_with_cloud') === 'true';
+
+    // Jika data lokal belum ada atau tersisa sebagian karena blacklist lama dan belum tersinkron cloud
+    if (!Array.isArray(existingProducts) || existingProducts.length === 0 || (!isCloudSynced && existingProducts.length < INITIAL_PRODUCTS.length)) {
+      localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(INITIAL_PRODUCTS));
     }
 
     // 2. Inisialisasi Ulasan
-    const deletedReviewIds = new Set(this.getDeletedReviewIds());
     let existingReviews = null;
     try {
       const rawRev = localStorage.getItem(this.KEYS.REVIEWS);
@@ -99,14 +93,7 @@ const Store = {
     }
 
     if (!Array.isArray(existingReviews) || existingReviews.length === 0) {
-      const initialReviews = INITIAL_REVIEWS.filter(r => !deletedReviewIds.has(r.id));
-      localStorage.setItem(this.KEYS.REVIEWS, JSON.stringify(initialReviews));
-    } else {
-      // Jangan timpa ulang ulasan yang telah dihapus
-      const cleanReviews = existingReviews.filter(r => !deletedReviewIds.has(r.id));
-      if (cleanReviews.length !== existingReviews.length) {
-        localStorage.setItem(this.KEYS.REVIEWS, JSON.stringify(cleanReviews));
-      }
+      localStorage.setItem(this.KEYS.REVIEWS, JSON.stringify(INITIAL_REVIEWS));
     }
 
     if (!localStorage.getItem(this.KEYS.SETTINGS)) {
@@ -231,7 +218,6 @@ const Store = {
   },
 
   deleteProduct(id) {
-    this.addDeletedProductId(id);
     let products = this.getProducts();
     products = products.filter(p => p.id !== id);
     localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(products));
@@ -284,7 +270,6 @@ const Store = {
   },
 
   deleteReview(reviewId) {
-    this.addDeletedReviewId(reviewId);
     let reviews = this.getReviews();
     const target = reviews.find(r => r.id === reviewId);
     if (target) {

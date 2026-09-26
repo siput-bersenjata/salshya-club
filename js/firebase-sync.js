@@ -146,11 +146,24 @@ const FirebaseSync = {
           }
         });
 
-        // Urutkan produk: yang terbaru (atau createdAt / urutan awal)
+        const initialOrderMap = {};
+        if (typeof INITIAL_PRODUCTS !== 'undefined' && Array.isArray(INITIAL_PRODUCTS)) {
+          INITIAL_PRODUCTS.forEach((p, idx) => {
+            initialOrderMap[p.id] = idx;
+          });
+        }
+
+        // Urutkan produk: produk baru (createdAt) di atas, produk awal sesuai urutan katalog
         remoteProducts.sort((a, b) => {
-          const timeA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-          const timeB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-          return timeB - timeA;
+          if (a.createdAt && b.createdAt && a.createdAt !== b.createdAt) {
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+          }
+          if (a.createdAt && !b.createdAt) return -1;
+          if (!a.createdAt && b.createdAt) return 1;
+
+          const orderA = initialOrderMap[a.id] !== undefined ? initialOrderMap[a.id] : 999;
+          const orderB = initialOrderMap[b.id] !== undefined ? initialOrderMap[b.id] : 999;
+          return orderA - orderB;
         });
 
         console.log(`☁️ [FirebaseSync] Menerima ${remoteProducts.length} produk dari Cloud Firestore.`);
@@ -223,8 +236,14 @@ const FirebaseSync = {
   applyRemoteProducts(products) {
     if (!Array.isArray(products) || products.length === 0) return;
 
+    const prodKey = (typeof Store !== 'undefined' && Store.KEYS && Store.KEYS.PRODUCTS)
+      ? Store.KEYS.PRODUCTS
+      : 'salshya_products_v1';
+
     try {
-      localStorage.setItem(Store.KEYS.PRODUCTS, JSON.stringify(products));
+      localStorage.setItem(prodKey, JSON.stringify(products));
+      localStorage.setItem('salshya_synced_with_cloud', 'true');
+      localStorage.removeItem('salshya_deleted_products_v1');
     } catch (e) {
       console.warn('LocalStorage save error in applyRemoteProducts', e);
     }
@@ -236,7 +255,7 @@ const FirebaseSync = {
       } else {
         App.renderProducts();
         App.renderCategories();
-        if (Store.isAdminLoggedIn()) {
+        if (typeof Store !== 'undefined' && Store.isAdminLoggedIn && Store.isAdminLoggedIn()) {
           App.renderAdminProductsTable();
           App.renderAdminOverview();
         }
