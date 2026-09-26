@@ -61,39 +61,22 @@ const Store = {
     }
   },
 
-  // Inisialisasi awal jika LocalStorage masih kosong atau tersisa parsial karena blacklist lama
+  // Inisialisasi awal hanya jika LocalStorage benar-benar kosong (kunjungan pertama)
   init() {
     // 1. Inisialisasi Produk
-    let existingProducts = [];
-    try {
-      const raw = localStorage.getItem(this.KEYS.PRODUCTS);
-      if (raw) existingProducts = JSON.parse(raw);
-    } catch (e) {
-      existingProducts = [];
-    }
-
-    // Bersihkan blacklist lokal yang tidak valid karena Cloud Firestore adalah sumber utama
-    localStorage.removeItem(this.KEYS.DELETED_PRODUCTS);
-    localStorage.removeItem(this.KEYS.DELETED_REVIEWS);
-
-    const isCloudSynced = localStorage.getItem('salshya_synced_with_cloud') === 'true';
-
-    // Jika data lokal belum ada atau tersisa sebagian karena blacklist lama dan belum tersinkron cloud
-    if (!Array.isArray(existingProducts) || existingProducts.length === 0 || (!isCloudSynced && existingProducts.length < INITIAL_PRODUCTS.length)) {
-      localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(INITIAL_PRODUCTS));
+    const rawProducts = localStorage.getItem(this.KEYS.PRODUCTS);
+    if (rawProducts === null) {
+      const deletedProductIds = new Set(this.getDeletedProductIds());
+      const initial = INITIAL_PRODUCTS.filter(p => !deletedProductIds.has(p.id));
+      localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(initial));
     }
 
     // 2. Inisialisasi Ulasan
-    let existingReviews = null;
-    try {
-      const rawRev = localStorage.getItem(this.KEYS.REVIEWS);
-      if (rawRev) existingReviews = JSON.parse(rawRev);
-    } catch (e) {
-      existingReviews = null;
-    }
-
-    if (!Array.isArray(existingReviews) || existingReviews.length === 0) {
-      localStorage.setItem(this.KEYS.REVIEWS, JSON.stringify(INITIAL_REVIEWS));
+    const rawReviews = localStorage.getItem(this.KEYS.REVIEWS);
+    if (rawReviews === null) {
+      const deletedReviewIds = new Set(this.getDeletedReviewIds());
+      const initialReviews = INITIAL_REVIEWS.filter(r => !deletedReviewIds.has(r.id));
+      localStorage.setItem(this.KEYS.REVIEWS, JSON.stringify(initialReviews));
     }
 
     if (!localStorage.getItem(this.KEYS.SETTINGS)) {
@@ -153,7 +136,9 @@ const Store = {
   getProducts() {
     try {
       const data = localStorage.getItem(this.KEYS.PRODUCTS);
-      return data ? JSON.parse(data) : INITIAL_PRODUCTS;
+      const list = data ? JSON.parse(data) : INITIAL_PRODUCTS;
+      const deletedIds = new Set(this.getDeletedProductIds());
+      return list.filter(p => !deletedIds.has(p.id) && !p.isDeleted);
     } catch (e) {
       console.error('Failed to parse products', e);
       return INITIAL_PRODUCTS;
@@ -218,6 +203,7 @@ const Store = {
   },
 
   deleteProduct(id) {
+    this.addDeletedProductId(id);
     let products = this.getProducts();
     products = products.filter(p => p.id !== id);
     localStorage.setItem(this.KEYS.PRODUCTS, JSON.stringify(products));
@@ -235,7 +221,9 @@ const Store = {
   getReviews() {
     try {
       const data = localStorage.getItem(this.KEYS.REVIEWS);
-      return data ? JSON.parse(data) : INITIAL_REVIEWS;
+      const list = data ? JSON.parse(data) : INITIAL_REVIEWS;
+      const deletedIds = new Set(this.getDeletedReviewIds());
+      return list.filter(r => !deletedIds.has(r.id) && !r.isDeleted);
     } catch (e) {
       return INITIAL_REVIEWS;
     }
@@ -270,6 +258,7 @@ const Store = {
   },
 
   deleteReview(reviewId) {
+    this.addDeletedReviewId(reviewId);
     let reviews = this.getReviews();
     const target = reviews.find(r => r.id === reviewId);
     if (target) {

@@ -234,7 +234,7 @@ const FirebaseSync = {
    * Terapkan produk dari Cloud ke LocalStorage dan Refresh Tampilan
    */
   applyRemoteProducts(products) {
-    if (!Array.isArray(products) || products.length === 0) return;
+    if (!Array.isArray(products)) return;
 
     const prodKey = (typeof Store !== 'undefined' && Store.KEYS && Store.KEYS.PRODUCTS)
       ? Store.KEYS.PRODUCTS
@@ -243,7 +243,6 @@ const FirebaseSync = {
     try {
       localStorage.setItem(prodKey, JSON.stringify(products));
       localStorage.setItem('salshya_synced_with_cloud', 'true');
-      localStorage.removeItem('salshya_deleted_products_v1');
     } catch (e) {
       console.warn('LocalStorage save error in applyRemoteProducts', e);
     }
@@ -351,6 +350,7 @@ const FirebaseSync = {
     try {
       const cleanProd = this.cleanData({
         ...product,
+        isDeleted: false,
         updatedAt: new Date().toISOString()
       });
       await this.db.collection('products').doc(product.id).set(cleanProd, { merge: true });
@@ -361,14 +361,18 @@ const FirebaseSync = {
   },
 
   /**
-   * Hapus Produk dari Cloud Firestore
+   * Hapus Produk dari Cloud Firestore (Soft Delete Permanen)
+   * Menggunakan isDeleted: true agar produk tidak pernah dibangkitkan kembali
    */
   async deleteProduct(productId) {
     if (!productId || !this.db) return;
 
     try {
-      await this.db.collection('products').doc(productId).delete();
-      console.log(`🗑️ [FirebaseSync] Produk berhasil dihapus dari Cloud: ${productId}`);
+      await this.db.collection('products').doc(productId).set({
+        isDeleted: true,
+        deletedAt: new Date().toISOString()
+      }, { merge: true });
+      console.log(`🗑️ [FirebaseSync] Produk berhasil ditandai terhapus (soft delete) di Cloud: ${productId}`);
     } catch (err) {
       console.error(`❌ [FirebaseSync] Gagal menghapus produk ${productId} dari Cloud:`, err);
     }
@@ -401,6 +405,7 @@ const FirebaseSync = {
     try {
       const cleanReview = this.cleanData({
         ...review,
+        isDeleted: false,
         updatedAt: new Date().toISOString()
       });
       await this.db.collection('reviews').doc(review.id).set(cleanReview, { merge: true });
@@ -411,14 +416,17 @@ const FirebaseSync = {
   },
 
   /**
-   * Hapus Ulasan dari Cloud Firestore
+   * Hapus Ulasan dari Cloud Firestore (Soft Delete)
    */
   async deleteReview(reviewId) {
     if (!reviewId || !this.db) return;
 
     try {
-      await this.db.collection('reviews').doc(reviewId).delete();
-      console.log(`🗑️ [FirebaseSync] Ulasan berhasil dihapus dari Cloud: ${reviewId}`);
+      await this.db.collection('reviews').doc(reviewId).set({
+        isDeleted: true,
+        deletedAt: new Date().toISOString()
+      }, { merge: true });
+      console.log(`🗑️ [FirebaseSync] Ulasan berhasil ditandai terhapus di Cloud: ${reviewId}`);
     } catch (err) {
       console.error(`❌ [FirebaseSync] Gagal menghapus ulasan ${reviewId} dari Cloud:`, err);
     }
@@ -443,35 +451,38 @@ const FirebaseSync = {
   },
 
   /**
-   * Auto-seed produk awal jika database Firestore masih kosong
+   * Auto-seed produk awal HANYA jika database Firestore kosong dan BELUM pernah diinisialisasi
    */
   async seedInitialProducts() {
     if (!this.db || typeof INITIAL_PRODUCTS === 'undefined') return;
 
-    console.log('🌱 [FirebaseSync] Memulai auto-seeding katalog ke Cloud Firestore...');
-    const batch = this.db.batch();
-
-    // Seed Produk
-    INITIAL_PRODUCTS.forEach(p => {
-      const ref = this.db.collection('products').doc(p.id);
-      batch.set(ref, this.cleanData(p));
-    });
-
-    // Seed Pengaturan
-    if (typeof INITIAL_SETTINGS !== 'undefined') {
-      const settingsRef = this.db.collection('settings').doc('general');
-      batch.set(settingsRef, this.cleanData(INITIAL_SETTINGS));
-    }
-
-    // Seed Ulasan
-    if (typeof INITIAL_REVIEWS !== 'undefined') {
-      INITIAL_REVIEWS.forEach(r => {
-        const revRef = this.db.collection('reviews').doc(r.id);
-        batch.set(revRef, this.cleanData(r));
-      });
-    }
-
     try {
+      const existingSnap = await this.db.collection('products').limit(1).get();
+      if (!existingSnap.empty) {
+        console.log('[FirebaseSync] Koleksi produk sudah ada di Cloud. Skip auto-seed.');
+        return;
+      }
+
+      console.log('🌱 [FirebaseSync] Memulai auto-seeding katalog ke Cloud Firestore...');
+      const batch = this.db.batch();
+
+      INITIAL_PRODUCTS.forEach(p => {
+        const ref = this.db.collection('products').doc(p.id);
+        batch.set(ref, this.cleanData({ ...p, isDeleted: false, createdAt: new Date().toISOString() }));
+      });
+
+      if (typeof INITIAL_SETTINGS !== 'undefined') {
+        const settingsRef = this.db.collection('settings').doc('general');
+        batch.set(settingsRef, this.cleanData(INITIAL_SETTINGS));
+      }
+
+      if (typeof INITIAL_REVIEWS !== 'undefined') {
+        INITIAL_REVIEWS.forEach(r => {
+          const revRef = this.db.collection('reviews').doc(r.id);
+          batch.set(revRef, this.cleanData({ ...r, isDeleted: false, createdAt: new Date().toISOString() }));
+        });
+      }
+
       await batch.commit();
       console.log('✅ [FirebaseSync] Auto-seeding ke Cloud Firestore berhasil!');
     } catch (err) {
