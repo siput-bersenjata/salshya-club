@@ -318,6 +318,37 @@ const INITIAL_PRODUCTS = [
     tags: ['Jasa Vote', 'Polling Website', 'Survey Online', 'Vote Lomba', 'Strawpoll Vote']
   },
   {
+    id: 'prod-wattpad-views',
+    name: 'Jual View Wattpad Versi Indonesia (Tingkatkan Pembaca Cerita Cepat & Aman)',
+    category: 'social',
+    price: 15000,
+    originalPrice: 35000,
+    rating: 5.0,
+    soldCount: 940,
+    badge: 'POPULER',
+    badgeType: 'orange',
+    iconType: 'book-open',
+    image: 'wattpad-views.jpg',
+    images: ['wattpad-views.jpg'],
+    description: 'Layanan jasa penambah view dan pembaca (reads) cerita Wattpad versi Indonesia nomor 1. Bantu dongkrak popularitas cerita novel Anda agar masuk jajaran trending ranking Wattpad, meningkatkan reputasi cerita, dan memikat lebih banyak pembaca organik tanpa ribet. 100% aman tanpa password akun, hanya memerlukan link/tautan cerita novel Wattpad Anda.',
+    features: [
+      'Real pembaca & traffic akun aktif Indonesia',
+      '100% aman tanpa password (hanya butuh tautan link cerita)',
+      'Meningkatkan algoritma rekomendasi & ranking cerita Wattpad',
+      'Proses pengerjaan cepat dan masuk bertahap alami anti-drop',
+      'Bergaransi refill jika ada penurunan (drop protection)',
+      'Cocok untuk penulis baru maupun novelis yang mengejar monetisasi / penerbitan'
+    ],
+    variants: [
+      { name: 'Paket 1.000 Views Cerita Wattpad Indonesia', price: 15000 },
+      { name: 'Paket 3.000 Views Cerita Wattpad Indonesia', price: 35000 },
+      { name: 'Paket 5.000 Views Cerita Wattpad Indonesia (Best Seller)', price: 55000 },
+      { name: 'Paket 10.000 Views Cerita Wattpad Indonesia', price: 95000 },
+      { name: 'Paket 25.000 Views Cerita Wattpad Indonesia Sultan', price: 199000 }
+    ],
+    tags: ['Wattpad', 'View Wattpad', 'Wattpad Indonesia', 'Jasa Wattpad', 'Pembaca Cerita', 'Trending Wattpad', 'Layanan Digital']
+  },
+  {
     id: 'prod-tissue-box',
     name: 'Kotak Tisu Motif Seni 3D Kayu Solid Kontemporer',
     category: 'craft',
@@ -437,6 +468,15 @@ const INITIAL_REVIEWS = [
     date: '2026-09-09',
     comment: 'Kotak tisu kayu 3D nya beneran cakep dan estetik di meja ruang tamu. Pengerjaannya halus, packing rapi dan aman sampai Malang. Sukses selalu Salshya Club!',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Dewi'
+  },
+  {
+    id: 'rev-11',
+    productId: 'prod-wattpad-views',
+    userName: 'Zahra Author (Novelis)',
+    rating: 5,
+    date: '2026-09-12',
+    comment: 'View Wattpad Indonesia-nya beneran top markotop! Cerita novel saya yang tadinya sepi langsung naik rank dan pembaca organik mulai ramai berdatangan. Prosesnya aman tanpa minta password, recommended banget!',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Zahra'
   }
 ];
 
